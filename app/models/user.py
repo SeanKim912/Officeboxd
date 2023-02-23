@@ -25,6 +25,9 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
+    profile = db.relationship(
+        'Profile', back_populates='user', cascade='all, delete')
+
     def to_dict(self):
         return {
             'id': self.id,
