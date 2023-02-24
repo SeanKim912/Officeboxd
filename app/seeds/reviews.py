@@ -1,4 +1,4 @@
-from .db import db, environment, SCHEMA, Review
+from app.models import db, environment, SCHEMA, Review
 
 def seed_reviews():
     rvw1 = Review(

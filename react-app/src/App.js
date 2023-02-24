@@ -5,6 +5,10 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import SplashPage from "./components/SplashPage";
+import ProfilePage from "./components/ProfilePage";
+import CreateProfilePage from "./components/CreateProfilePage";
+import EditProfilePage from "./components/EditProfilePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,10 +28,22 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route path="/my-profile">
+            <ProfilePage />
+          </Route>
+          <Route path="/create-profile">
+            <CreateProfilePage />
+          </Route>
+          <Route path="/edit-profile">
+            <EditProfilePage />
+          </Route>
+          <Route exact path='/'>
+            <SplashPage />
+          </Route>
         </Switch>
       )}
     </>
-  );
+  )
 }
 
 export default App;

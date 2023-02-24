@@ -269,14 +269,6 @@
             "index": "pypi",
             "version": "==1.0.4"
         },
-        "setuptools": {
-            "hashes": [
-                "sha256:9d3de8591bd6f6522594406fa46a6418eabd0562dacb267f8556675762801514",
-                "sha256:ed4e75fafe103c79b692f217158ba87edf38d31004b9dbc1913debb48793c828"
-            ],
-            "markers": "python_version >= '3.7'",
-            "version": "==67.3.3"
-        },
         "six": {
             "hashes": [
                 "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926",
