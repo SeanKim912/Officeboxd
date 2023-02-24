@@ -22,5 +22,7 @@ class Profile (db.Model):
             'id': self.id,
             'user_id': self.user_id,
             'avatar_url': self.avatar_url,
+            'location': self.location,
+            'pronoun': self.pronoun,
             'bio': self.bio
         }
