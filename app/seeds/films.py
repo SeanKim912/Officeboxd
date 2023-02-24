@@ -17,7 +17,7 @@ def seed_films():
         producer="Barrie M. Osborne",
         writer="J.R.R. Tolkien",
         editor="John Gilbert",
-        cinematorgrapher="Andrew Lesnie",
+        cinematographer="Andrew Lesnie",
     )
     dogday = Film(
         title="Dog Day Afternoon",
@@ -35,7 +35,7 @@ def seed_films():
         producer="Martin Bergman",
         writer="Frank Pierson",
         editor="Dede Allen",
-        cinematorgrapher="Victor J. Kemper",
+        cinematographer="Victor J. Kemper",
     )
     bluevelvet = Film(
         title="Blue Velvet",
@@ -53,7 +53,7 @@ def seed_films():
         producer="Dino De Laurentis",
         writer="David Lynch",
         editor="Duwayne Dunham",
-        cinematorgrapher="Frederick Elmes",
+        cinematographer="Frederick Elmes",
     )
     stalker = Film(
         title="Stalker",
@@ -71,7 +71,7 @@ def seed_films():
         producer="Aleksandra Demidova",
         writer="The Strugatsky Brothers",
         editor="Lyudmila Feiginova",
-        cinematorgrapher="Georgi Rerberg",
+        cinematographer="Georgi Rerberg",
     )
     synecdoche = Film(
         title="Synecdoche, New York",
@@ -89,7 +89,7 @@ def seed_films():
         producer="Spike Jonze",
         writer="Charlie Kaufman",
         editor="Robert Frazen",
-        cinematorgrapher="Frederick Elmes",
+        cinematographer="Frederick Elmes",
     )
 
     # lotr = Film(
