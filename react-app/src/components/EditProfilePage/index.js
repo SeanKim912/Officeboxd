@@ -47,7 +47,7 @@ function EditProfilePage() {
     async function handleDelete() {
 		const awaitedData = await dispatch(thunkDeleteProfile());
 		if (awaitedData) {
-			dispatch(logout());
+			await dispatch(logout());
 			history.push("/");
 		}
 	}

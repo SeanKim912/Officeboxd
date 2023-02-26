@@ -76,8 +76,8 @@ def seed_films():
     synecdoche = Film(
         title="Synecdoche, New York",
         year= 2008,
-        poster="",
-        still="",
+        poster="https://imgs.search.brave.com/mHWsXkNejoIhkpaH3khTbicFUibq69TkaqaOg7fRk5E/rs:fit:297:436:1/g:ce/aHR0cHM6Ly8zLmJw/LmJsb2dzcG90LmNv/bS8tTHhueDU1TVdu/eG8vVXNteWdTVDBw/OUkvQUFBQUFBQUFT/dUEvclV2VjF4cDVi/cm8vczE2MDAvU3lu/ZWNkb2NoZSxfTmV3/X1lvcmtfcG9zdGVy/LmpwZw",
+        still="https://imgs.search.brave.com/Is-a1V74Q_v_-dtaSF2fuCDK7XlhzA8117afDxy2L-M/rs:fit:1200:900:1/g:ce/aHR0cHM6Ly8zLmJw/LmJsb2dzcG90LmNv/bS8tWk5VbFlFQTFN/azQvVnlGdWQ1YnF0/YkkvQUFBQUFBQUFm/X0Uvd183ZG5OMG5k/RTBNUjRQbEpSUlhH/b1F2TlJYYnlXZ2d3/Q0xjQi9zMTYwMC9T/eW5lY2RvY2hlLU5Z/LmpwZw",
         tagline="TRYING TO CAPTURE STORIES WITHIN STORIES",
         synopsis="A theater director struggles with his work, and the women in his life, as he attempts to create a life-size replica of New York inside a warehouse as part of his new play.",
         runtime=124,

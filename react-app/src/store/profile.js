@@ -79,9 +79,11 @@ export const thunkDeleteProfile = () => async (dispatch) => {
     }
 }
 
+
 const initialState = {
     currentUserProfile: {}
 }
+
 
 const profileReducer = (state = initialState, action) => {
     let newState = { ...state }

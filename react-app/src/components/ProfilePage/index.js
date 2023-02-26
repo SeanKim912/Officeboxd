@@ -10,7 +10,7 @@ const ProfilePage = () => {
     const myProfile = useSelector(state => state.profile.currentUserProfile);
 
     useEffect(() => {
-        dispatch(thunkGetUserProfile())
+        dispatch(thunkGetUserProfile());
     }, [dispatch])
 
     function addDefaultSrc(ev) {

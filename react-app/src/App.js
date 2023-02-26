@@ -9,6 +9,7 @@ import SplashPage from "./components/SplashPage";
 import ProfilePage from "./components/ProfilePage";
 import CreateProfilePage from "./components/CreateProfilePage";
 import EditProfilePage from "./components/EditProfilePage";
+import FilmPage from "./components/FilmPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +23,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path="/film/:filmId">
+            <FilmPage />
+          </Route>
           <Route path="/login" >
             <LoginFormPage />
           </Route>

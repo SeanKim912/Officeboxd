@@ -1,5 +1,18 @@
 .profile-dropdown {
-  position: absolute;
+  position: fixed;
+	right: 26%;
+	color: black;
+	background-color: white;
+	border-radius: 8px;
+	background: rgb(255, 255, 255);
+	box-shadow: rgb(42 47 53 / 10%) 0px 1px 4px;
+	list-style-type: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 27px;
+	margin: 0;
 }
 
 .hidden {
