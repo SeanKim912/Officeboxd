@@ -16,7 +16,7 @@ class Film (db.Model):
     synopsis = db.Column(db.String(500))
     runtime = db.Column(db.Integer)
     director = db.Column(db.String(50))
-    studio = db.Column(db.String(20))
+    studio = db.Column(db.String(50))
     genre = db.Column(db.String(20))
     language = db.Column(db.String(20))
     country = db.Column(db.String(20))

@@ -54,6 +54,7 @@ const filmReducer = (state = initialState, action) => {
     let newState = { ...state }
     switch (action.type) {
         case ALL_FILMS: {
+            newState.currentFilm = {};
             newState.allFilms = normalize(action.film);
             return newState;
         }

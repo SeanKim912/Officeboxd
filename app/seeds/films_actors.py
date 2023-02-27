@@ -1,27 +1,22 @@
 from app.models import db, environment, SCHEMA
 
 def seed_films_actors(films, actors):
-    actorsList = list(actors)
-    print("ACTORS", actorsList)
-    actor1 = actorsList[0]
-    actor2 = actorsList[1]
-    actor3 = actorsList[2]
-    actor4 = actorsList[3]
-    actor5 = actorsList[4]
-    actor6 = actorsList[5]
-    actor7 = actorsList[6]
-    actor8 = actorsList[7]
-    actor9 = actorsList[8]
+    print("FILMS TO AN ARRAY", films)
+    actor1 = actors[0]
+    actor2 = actors[1]
+    actor3 = actors[2]
+    actor4 = actors[3]
+    actor5 = actors[4]
+    actor6 = actors[5]
+    actor7 = actors[6]
+    actor8 = actors[7]
+    actor9 = actors[8]
 
-
-    filmsList = list(films)
-    print("FILMS", filmsList)
-
-    film1 = filmsList[0]
-    film2 = filmsList[1]
-    film3 = filmsList[2]
-    film4 = filmsList[3]
-    film5 = filmsList[4]
+    film1 = films[0]
+    film2 = films[1]
+    film3 = films[2]
+    film4 = films[3]
+    film5 = films[4]
 
     film1.actor.append(actor3)
     film1.actor.append(actor4)
