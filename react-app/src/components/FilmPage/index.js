@@ -5,6 +5,8 @@ import { thunkGetOneFilm } from "../../store/film";
 import { thunkGetMyReview } from "../../store/review";
 import { useState } from "react";
 import OpenModalButton from "../OpenModalButton";
+import CreateReviewModal from "../CreateReviewModal";
+import EditReviewModal from "../EditReviewModal";
 import './FilmPage.css'
 
 const FilmPage = () => {
@@ -14,8 +16,6 @@ const FilmPage = () => {
     const review = useSelector(state => state.review.currentReview);
     const [filmTab, setFilmTab] = useState("cast")
     const { filmId } = useParams();
-
-    console.log("profile and film id", profile.id, filmId)
 
     useEffect(() => {
         dispatch(thunkGetOneFilm(filmId));
@@ -41,12 +41,12 @@ const FilmPage = () => {
                         <div className="review-sidebar">
                             <div className="icon-container">
                                 {review.watched ? (
-                                    <div>{review.watched}</div>
+                                    <div>Watched</div>
                                 ) : (
                                     <div>Not watched</div>
                                 )}
                                 {review.liked ? (
-                                    <div>{review.liked}</div>
+                                    <div>Liked</div>
                                 ) : (
                                     <div>Not liked</div>
                                 )}
@@ -54,16 +54,22 @@ const FilmPage = () => {
                             <div className="rating-container">
                                 Rating:
                                 {review.rating ? (
-                                    <div>{review.rating}</div>
+                                    <div>{review.rating}/10</div>
                                 ) : (
                                     <div>Not rated yet!</div>
                                 )}
                             </div>
                             <div className="review-button-container">
                                 {review.id ? (
-                                    <button>Edit your review...</button>
+                                    <OpenModalButton
+                                        buttonText="Edit your review..."
+                                        modalComponent={<EditReviewModal />}
+                                    />
                                     ) : (
-                                    <button>Review or log...</button>
+                                    <OpenModalButton
+                                        buttonText="Review or log..."
+                                        modalComponent={<CreateReviewModal />}
+                                    />
                                 )}
                             </div>
                         </div>
