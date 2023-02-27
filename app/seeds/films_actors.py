@@ -1,7 +1,11 @@
-from app.models import db, environment, SCHEMA
+from app.models import db, Film, Actor, environment, SCHEMA
 
-def seed_films_actors(films, actors):
-    print("FILMS TO AN ARRAY", films)
+def seed_films_actors():
+    actors = Actor.query.all()
+    films = Film.query.all()
+
+    print("WHAT ARE THESE", actors, films)
+
     actor1 = actors[0]
     actor2 = actors[1]
     actor3 = actors[2]

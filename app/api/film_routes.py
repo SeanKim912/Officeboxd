@@ -19,6 +19,5 @@ def all_films():
 @login_required
 def film_details(id):
     film = Film.query.get(id)
-    print("SINGLE FILM", film.to_dict())
 
-    return film.to_dict();
+    return film.to_dict()

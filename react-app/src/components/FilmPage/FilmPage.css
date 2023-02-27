@@ -1,0 +1,41 @@
+.filmPageContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.still {
+    width: 1200px;
+    height: 500px;
+}
+
+.main-row {
+    width: 670px;
+    display: flex;
+    flex-direction: row;
+}
+
+.right-section {
+    width: 670px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.title-container {
+    width: 670px;
+}
+
+.middle-container {
+    width: 390px;
+}
+
+.review-sidebar {
+    width: 230px;
+}
+
+.left-poster {
+    height: 345px;
+    width: 230px;
+    border-radius: 5px;
+}

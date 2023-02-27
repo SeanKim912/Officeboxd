@@ -30,10 +30,10 @@ def seed():
 
     seed_users()
     seed_profiles()
-    films = seed_films()
+    seed_films()
     seed_reviews()
-    actors = seed_actors()
-    seed_films_actors(films, actors)
+    seed_actors()
+    seed_films_actors()
     # Add other seed functions here
 
 
