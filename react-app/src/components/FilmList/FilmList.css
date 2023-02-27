@@ -1,0 +1,21 @@
+.card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 950px;
+}
+
+.film-card {
+    height: 225px;
+    width: 150px;
+    border-radius: 5px;
+    margin: 5px;
+}
