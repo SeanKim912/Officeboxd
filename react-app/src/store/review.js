@@ -1,6 +1,8 @@
 const MY_REVIEW = 'review/mine'
 const CREATE_REVIEW = 'review/create'
 const ALL_REVIEWS = 'review/all'
+const EDIT_REVIEW = 'review/edit'
+const DELETE_REVIEW = 'review/delete'
 
 const myReviewAction = (review) => ({
     type: MY_REVIEW,
@@ -17,6 +19,15 @@ const createReviewAction = (review) => ({
     review
 })
 
+const editReviewAction = (review) => ({
+    type: EDIT_REVIEW,
+    review
+})
+
+const deleteReviewAction = (review) => ({
+    type: DELETE_REVIEW,
+    review
+})
 
 export const thunkGetMyReview = (filmId) => async (dispatch) => {
     const response = await fetch(`/api/review/${filmId}`);
@@ -56,6 +67,36 @@ export const thunkCreateReview = (review) => async (dispatch) => {
     }
 }
 
+export const thunkEditReview = (review) => async (dispatch) => {
+    const response = await fetch('/api/review/edit', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify(review)
+    });
+
+    if (response.ok) {
+        const editedReview = await response.json();
+        dispatch(editReviewAction(editedReview));
+
+        return editedReview;
+    }
+}
+
+export const thunkDeleteReview = (review) => async (dispatch) => {
+    const response = await fetch ('/api/review/delete', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify(review)
+    });
+
+    if (response.ok) {
+        const deletedReview = await response.json();
+        dispatch(deleteReviewAction(deletedReview));
+
+        return deletedReview;
+    }
+}
+
 
 const normalize = (arr) => {
 	const resultObj = {};
@@ -83,6 +124,14 @@ const reviewReducer = (state = initialState, action) => {
         }
         case CREATE_REVIEW: {
             newState.currentReview = { ...action.review };
+            return newState;
+        }
+        case EDIT_REVIEW: {
+            newState.currentReview = { ...action.review };
+            return newState;
+        }
+        case DELETE_REVIEW: {
+            newState.currentReview = {};
             return newState;
         }
         default: {
