@@ -10,7 +10,10 @@ function Navigation({ isLoaded }) {
 	return (
 		<ul className='navContainer'>
 			<li>
-				<NavLink exact to="/">Officeboxd</NavLink>
+				<NavLink className="title" exact to="/">
+					<img src="https://github.com/SeanKim912/Officeboxd/blob/dev/react-app/src/components/Navigation/officeboxd_logo.png" />
+					<h1 className="logo">Officeboxd</h1>
+				</NavLink>
 			</li>
 			{isLoaded && (
 				<>

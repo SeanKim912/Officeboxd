@@ -1,5 +1,5 @@
 .profile-dropdown {
-  position: fixed;
+	position: fixed;
 	right: 26%;
 	color: black;
 	background-color: white;
@@ -15,14 +15,46 @@
 	margin: 0;
 }
 
+.logo {
+	text-decoration: none;
+	color:rgb(255, 255, 255);
+	font-family: Graphik-Regular-Web, sans-serif;
+}
+
+.title {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.title:visited {
+	text-decoration: none;
+}
+
+.title:link {
+	text-decoration: none;
+}
+
+.title:hover {
+	text-decoration: none;
+}
+
+.title:active {
+	text-decoration: none;
+}
+
 .hidden {
-  display: none;
+	display: none;
 }
 
 .navContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  list-style-type: none;
+	background-color: #14181c;
+	position: relative;
+	margin: 0px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	list-style-type: none;
+	height: 72px;
 }

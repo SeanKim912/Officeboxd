@@ -34,7 +34,6 @@ export const thunkGetMyReview = (filmId) => async (dispatch) => {
 
     if (response.ok) {
         const review = await response.json();
-        console.log('REVIEW RESPONSE CONTENTS', review)
         dispatch(myReviewAction(review));
 
         return review;

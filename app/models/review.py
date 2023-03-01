@@ -27,5 +27,7 @@ class Review (db.Model):
             'watched': self.watched,
             'liked': self.liked,
             'rating': self.rating,
-            'review_text': self.review_text
+            'review_text': self.review_text,
+            'profile': self.profile.to_dict(),
+            'film': self.film.to_dict()
         }
