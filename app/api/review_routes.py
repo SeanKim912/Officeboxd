@@ -21,6 +21,13 @@ def all_reviews():
 
     return review_arr
 
+@review_routes.route('/films-reviews/<int:film_id>')
+def films_reviews(film_id):
+    films_review_list = Review.query.filter(Review.film_id == film_id).all()
+    films_review_arr = [review.to_dict() for review in films_review_list]
+
+    return films_review_arr
+
 @review_routes.route('/create', methods=['POST'])
 @login_required
 def create_review():

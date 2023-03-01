@@ -1,25 +1,32 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { thunkGetOneFilm } from "../../store/film";
 import { thunkGetMyReview } from "../../store/review";
+import { thunkGetFilmsReviews } from "../../store/review";
 import { useState } from "react";
 import OpenModalButton from "../OpenModalButton";
 import CreateReviewModal from "../CreateReviewModal";
 import EditReviewModal from "../EditReviewModal";
+import Cast from "../Cast";
 import './FilmPage.css'
 
 const FilmPage = () => {
     const dispatch = useDispatch();
-    const profile = useSelector(state => state.profile.currentUserProfile);
     const film = useSelector(state => state.film.currentFilm);
+    const cast = film.actors;
+    const profile = useSelector(state => state.profile.currentUserProfile)
     const review = useSelector(state => state.review.currentReview);
+    const otherReviews = useSelector(state => state.review.filmsReviews);
+    const otherReviewsArr = Object.values(otherReviews);
+    const otherReviewsFiltered = otherReviewsArr.filter(review => review.profile_id !== profile.id)
     const [filmTab, setFilmTab] = useState("cast")
     const { filmId } = useParams();
 
     useEffect(() => {
         dispatch(thunkGetOneFilm(filmId));
         dispatch(thunkGetMyReview(filmId));
+        dispatch(thunkGetFilmsReviews(filmId));
     }, [dispatch])
 
     return (
@@ -36,6 +43,36 @@ const FilmPage = () => {
                         <div className="middle-container">
                             <div>{film.tagline}</div>
                             <div>{film.synopsis}</div>
+                            <div className="details-tab">
+                                <button onClick={() => setFilmTab("cast")}>Cast</button>
+                                <button onClick={() => setFilmTab("crew")}>Crew</button>
+                                <button onClick={() => setFilmTab("details")}>Details</button>
+                                <button onClick={() => setFilmTab("genres")}>Genres</button>
+                            </div>
+                            <div>
+                                {filmTab === "cast" && (
+                                    <Cast cast={cast} />
+                                )}
+                                {filmTab === "crew" && (
+                                    <>
+                                        <div>Director: {film.director}</div>
+                                        <div>Producer: {film.producer}</div>
+                                        <div>Writer: {film.writer}</div>
+                                        <div>Editor: {film.editor}</div>
+                                        <div>Cinematographer: {film.cinematographer}</div>
+                                    </>
+                                )}
+                                {filmTab === "details" && (
+                                    <>
+                                        <div>Studio: {film.studio}</div>
+                                        <div>Country: {film.country}</div>
+                                        <div>Language: {film.language}</div>
+                                    </>
+                                )}
+                                {filmTab === "genres" && (
+                                    <div>Genres: {film.genre}</div>
+                                )}
+                            </div>
                             <div>{film.runtime} mins</div>
                         </div>
                         <div className="review-sidebar">
@@ -62,11 +99,13 @@ const FilmPage = () => {
                             <div className="review-button-container">
                                 {review.id ? (
                                     <OpenModalButton
+                                        className="film-page-button"
                                         buttonText="Edit your review..."
                                         modalComponent={<EditReviewModal />}
                                     />
-                                    ) : (
+                                ) : (
                                     <OpenModalButton
+                                        className="film-page-button"
                                         buttonText="Review or log..."
                                         modalComponent={<CreateReviewModal />}
                                     />
@@ -81,6 +120,18 @@ const FilmPage = () => {
                         <div>{review.review_text}</div>
                     ) : (
                         <div>You haven't reviewed this film yet!</div>
+                    )}
+                    <h3>Other reviews</h3>
+                    {otherReviewsFiltered.length > 0 ? (
+                        otherReviewsFiltered.map((review) => (
+                            <div>
+                                <img className="review-avatar" src={review.profile.avatar_url} />
+                                <div>Review by {review.profile.user.username}</div>
+                                <div>{review.rating}/10</div>
+                                <div>{review.review_text}</div>
+                            </div>
+                        ))) : (
+                        <div>No one else has reviewed this film yet!</div>
                     )}
                 </div>
             </div>

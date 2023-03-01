@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useModal } from "../../context/Modal";
 import { thunkEditReview } from "../../store/review";
 import { thunkDeleteReview } from "../../store/review";
+import './EditReviewModal.css'
 
 const EditReviewModal = () => {
     const dispatch = useDispatch();
@@ -46,16 +47,19 @@ const EditReviewModal = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
+        <div className="edit-form-container">
+
+        <h2 className="edit-form-header">Edit your review</h2>
+        <form className="edit-review-form" onSubmit={handleSubmit}>
+            <label className="edit-form-field">
                 Like:
                 <input
                     type='checkbox'
                     value={liked}
                     onChange={handleOnChange}
-                />
+                    />
             </label>
-            <label>
+            <label className="edit-form-field">
                 Rating:
                 <input
                     type="number"
@@ -63,24 +67,26 @@ const EditReviewModal = () => {
                     min="1"
                     max="10"
                     onChange={(e) => setRating(e.target.value)}
-                />
+                    />
             </label>
-            <label>
-                <input
-                    type="text"
+            <label className="edit-form-field">
+                <textarea
                     value={review_text}
                     placeholder="Add a review..."
+                    rows="10"
+                    cols="25"
                     maxLength={10000}
                     onChange={(e) => setReview_text(e.target.value)}
-                />
+                    />
             </label>
-            <button type="submit">
+            <button className="edit-button" type="submit">
                 SAVE
             </button>
-            <button onClick={handleDelete}>
+            <button className="edit-button" onClick={handleDelete}>
                 DELETE
             </button>
         </form>
+                    </div>
     )
 }
 

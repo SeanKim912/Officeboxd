@@ -3,6 +3,7 @@ const CREATE_REVIEW = 'review/create'
 const ALL_REVIEWS = 'review/all'
 const EDIT_REVIEW = 'review/edit'
 const DELETE_REVIEW = 'review/delete'
+const FILMS_REVIEWS = 'review/films-reviews'
 
 const myReviewAction = (review) => ({
     type: MY_REVIEW,
@@ -11,6 +12,11 @@ const myReviewAction = (review) => ({
 
 const allReviewsAction = (reviews) => ({
     type: ALL_REVIEWS,
+    reviews
+})
+
+const filmsReviewsAction = (reviews) => ({
+    type: FILMS_REVIEWS,
     reviews
 })
 
@@ -34,7 +40,6 @@ export const thunkGetMyReview = (filmId) => async (dispatch) => {
 
     if (response.ok) {
         const review = await response.json();
-        console.log('REVIEW RESPONSE CONTENTS', review)
         dispatch(myReviewAction(review));
 
         return review;
@@ -47,6 +52,17 @@ export const thunkGetAllReviews = () => async (dispatch) => {
     if (response.ok) {
         const reviews = await response.json();
         dispatch(allReviewsAction(reviews));
+
+        return reviews;
+    }
+}
+
+export const thunkGetFilmsReviews = (filmId) => async (dispatch) => {
+    const response = await fetch(`/api/review/films-reviews/${filmId}`)
+
+    if (response.ok) {
+        const reviews = await response.json();
+        dispatch(filmsReviewsAction(reviews))
 
         return reviews;
     }
@@ -106,7 +122,8 @@ const normalize = (arr) => {
 
 const initialState = {
     currentReview: {},
-    allReviews: {}
+    allReviews: {},
+    filmsReviews: {}
 }
 
 
@@ -132,6 +149,10 @@ const reviewReducer = (state = initialState, action) => {
         }
         case DELETE_REVIEW: {
             newState.currentReview = {};
+            return newState;
+        }
+        case FILMS_REVIEWS: {
+            newState.filmsReviews = { ...action.reviews };
             return newState;
         }
         default: {

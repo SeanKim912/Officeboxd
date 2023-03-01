@@ -11,6 +11,11 @@ function LoginFormModal() {
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
 
+  const demoInput = () => {
+		setEmail("demo@aa.io");
+		setPassword("password");
+	};
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
@@ -22,15 +27,15 @@ function LoginFormModal() {
   };
 
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="login-form-container">
+      <h2 className="login-form-header">Log In</h2>
+      <form className="login-form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label>
+        <label className="login-form-field">
           Email
           <input
             type="text"
@@ -39,7 +44,7 @@ function LoginFormModal() {
             required
           />
         </label>
-        <label>
+        <label className="login-form-field">
           Password
           <input
             type="password"
@@ -48,9 +53,10 @@ function LoginFormModal() {
             required
           />
         </label>
-        <button type="submit">Log In</button>
+        <button className="login-button" type="submit">LOG IN</button>
+        <button className='login-button' onClick={demoInput}>DEMO USER</button>
       </form>
-    </>
+    </div>
   );
 }
 

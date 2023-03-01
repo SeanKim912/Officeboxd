@@ -1,6 +1,5 @@
-.login-form-container {
+.edit-profile-container {
     font-family: Graphik-Light-Web, sans-serif;
-    background-color: #14181c;
     color: #667788;
     margin: 0px;
     padding: 20px;
@@ -10,30 +9,29 @@
     justify-content: center;
 }
 
-.login-form-header {
+.edit-profile-header {
     margin-top: 0px;
     margin-bottom: 0px;
 }
 
-.login-form {
+.edit-profile-form {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
 }
 
-.login-form-field {
+.edit-profile-field {
     margin-bottom: 10px;
     width: auto;
 }
 
-.login-button {
+.edit-profile-button {
     color: #fffcf1;
     font-family: Graphik-Semibold-Web, sans-serif;
     background-color: #00a11d;
     border: none;
     border-radius: 5px;
-    width: 80px;
     font-size: 1rem;
     font-weight: 400;
     margin-bottom: 10px;

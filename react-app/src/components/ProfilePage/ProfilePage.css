@@ -11,3 +11,13 @@
     border-radius: 50px;
     border: 2px solid white
 }
+
+.profile-review-poster {
+    width: 75px;
+    height: 110px;
+    border-radius: 5px;
+}
+
+.profile-container {
+    color: #9ab;
+}

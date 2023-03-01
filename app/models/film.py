@@ -46,5 +46,6 @@ class Film (db.Model):
             'producer': self.producer,
             'writer': self.writer,
             'editor': self.editor,
-            'cinematographer': self.cinematographer
+            'cinematographer': self.cinematographer,
+            'actors': [act.to_dict() for act in self.actor]
         }

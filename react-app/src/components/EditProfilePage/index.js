@@ -4,6 +4,7 @@ import { useState } from "react";
 import { thunkEditProfile } from "../../store/profile";
 import { logout } from "../../store/session";
 import { thunkDeleteProfile } from "../../store/profile";
+import './EditProfilePage.css'
 
 function EditProfilePage() {
     const dispatch = useDispatch();
@@ -53,10 +54,10 @@ function EditProfilePage() {
 	}
 
     return (
-        <>
-            <h1>Edit Profile</h1>
-            <form className="create-profile-form" onSubmit={handleSubmit}>
-                    <label className='profile-form-field'>
+        <div className="edit-profile-container">
+            <h1 className="edit-profile-header">Edit Profile</h1>
+            <form className="edit-profile-form" onSubmit={handleSubmit}>
+                    <label className='edit-profile-field'>
                         Avatar:
                         <input
                             type='url'
@@ -65,7 +66,7 @@ function EditProfilePage() {
                             required
                         />
                     </label>
-                    <label className='profile-form-field'>
+                    <label className='edit-profile-field'>
                         Bio:
                         <input
                             type='text'
@@ -75,7 +76,7 @@ function EditProfilePage() {
                             maxLength={500}
                         />
                     </label>
-                    <label className='profile-form-field'>
+                    <label className='edit-profile-field'>
                         Location:
                         <input
                             type='text'
@@ -84,7 +85,7 @@ function EditProfilePage() {
                             required
                         />
                     </label>
-                    <label className='profile-form-field'>
+                    <label className='edit-profile-field'>
                         Pronoun:
                         <select
                             type='text'
@@ -98,14 +99,14 @@ function EditProfilePage() {
                             ))}
                         </select>
                     </label>
-                    <button type="submit">
+                    <button className="edit-profile-button" type="submit">
                         Edit Profile
                     </button>
-                    <button onClick={handleDelete}>
+                    <button className="edit-profile-button" onClick={handleDelete}>
                         Delete Profile
                     </button>
                 </form>
-        </>
+        </div>
     )
 }
 
