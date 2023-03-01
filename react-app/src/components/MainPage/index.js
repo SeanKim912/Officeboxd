@@ -19,7 +19,7 @@ const MainPage = () => {
 
     return (
         <div className="main-body">
-            <h1 className="welcome-banner">Welcome back, {profile.user.username}. Here's what we've been watching...</h1>
+            <h1 className="welcome-banner">Welcome to Officeboxd! Here's what we've been watching...</h1>
             <FilmList />
             <h2 className="main-review-banner">REVIEWS FROM OTHER USERS</h2>
             {notMyReviews.map((review) => (

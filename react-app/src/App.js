@@ -26,8 +26,8 @@ function App() {
           <Route exact path="/film/:filmId">
             <FilmPage />
           </Route>
-          <Route exact path="/review/:reviewId">
-            
+          <
+            Route exact path="/review/:reviewId">
           </Route>
           <Route path="/login" >
             <LoginFormPage />
@@ -47,6 +47,7 @@ function App() {
           <Route exact path='/'>
             <SplashPage />
           </Route>
+          {/* 404 route here */}
         </Switch>
       )}
     </>

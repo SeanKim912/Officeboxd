@@ -99,11 +99,13 @@ const FilmPage = () => {
                             <div className="review-button-container">
                                 {review.id ? (
                                     <OpenModalButton
+                                        className="film-page-button"
                                         buttonText="Edit your review..."
                                         modalComponent={<EditReviewModal />}
                                     />
                                 ) : (
                                     <OpenModalButton
+                                        className="film-page-button"
                                         buttonText="Review or log..."
                                         modalComponent={<CreateReviewModal />}
                                     />

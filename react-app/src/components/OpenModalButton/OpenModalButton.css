@@ -1,0 +1,11 @@
+.dropdown-button {
+    color: #fffcf1;
+    font-family: Graphik-Semibold-Web, sans-serif;
+    background-color: #00a11d;
+    border: none;
+    border-radius: 5px;
+    width: 80px;
+    height: 28px;
+    font-size: 1rem;
+    font-weight: 400;
+}

@@ -1,6 +1,7 @@
 .filmPageContainer {
     display: flex;
     flex-direction: column;
+    color: #9ab;
 }
 
 .still {
@@ -45,3 +46,4 @@
     width: 40px;
     border-radius: 20px;
 }
+

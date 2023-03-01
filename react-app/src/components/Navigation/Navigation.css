@@ -1,10 +1,8 @@
 .profile-dropdown {
 	position: fixed;
-	right: 26%;
-	color: black;
-	background-color: white;
-	border-radius: 8px;
-	background: rgb(255, 255, 255);
+	right: 0%;
+	color: #667788;
+	background-color: #14181c;
 	box-shadow: rgb(42 47 53 / 10%) 0px 1px 4px;
 	list-style-type: none;
 	display: flex;
@@ -17,14 +15,51 @@
 
 .alt-nav {
 	background-color: #14181c;
+	font-family: Graphik-Regular-Web, sans-serif;
+	font-weight: 800;
+	color:rgb(255, 255, 255);
 	position: relative;
 	margin: 0px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
 	list-style-type: none;
 	height: 72px;
+}
+
+.nav-right {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.profile-link {
+	margin-right: 20px;
+}
+
+.link-text {
+	font-family: Graphik-Semibold-Web,sans-serif;
+	font-weight: 400;
+	color: #9ab;
+	text-decoration: none;
+}
+
+.link-text:visited {
+	text-decoration: none;
+}
+
+.link-text:link {
+	text-decoration: none;
+}
+
+.link-text:hover {
+	text-decoration: none;
+}
+
+.link-text:active {
+	text-decoration: none;
 }
 
 .logo {
@@ -82,4 +117,17 @@
 	justify-content: space-between;
 	list-style-type: none;
 	height: 72px;
+}
+
+.corner-button {
+	margin-right: 28px;
+	color: #fffcf1;
+    font-family: Graphik-Semibold-Web, sans-serif;
+    background-color: #00a11d;
+    border: none;
+    border-radius: 5px;
+    width: 80px;
+    height: 28px;
+    font-size: 1rem;
+    font-weight: 400;
 }

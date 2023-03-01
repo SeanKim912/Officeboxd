@@ -32,18 +32,18 @@ function Navigation({ isLoaded }) {
 					</NavLink>
 				</li>
 				{isLoaded && (
-					<>
-						<li>
-							<NavLink exact to="/my-profile">
+					<div className='nav-right'>
+						<li className='profile-link'>
+							<NavLink className='link-text' exact to="/my-profile">
 								{sessionUser && (
-									<button>Profile</button>
+									<div>PROFILE</div>
 								)}
 							</NavLink>
 						</li>
 						<li>
 							<ProfileButton user={sessionUser} />
 						</li>
-					</>
+					</div>
 				)}
 			</ul>
 		)

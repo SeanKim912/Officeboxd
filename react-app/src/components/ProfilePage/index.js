@@ -23,7 +23,7 @@ const ProfilePage = () => {
     }
 
     return (
-        <>
+        <div className="profile-container">
             <h1>My Profile</h1>
             <div>{user?.username}</div>
             <NavLink to={'/edit-profile'}>
@@ -47,7 +47,7 @@ const ProfilePage = () => {
                     <div>You haven't reviewed any films yet!</div>
                 )}
             </div>
-        </>
+        </div>
     )
 }
 

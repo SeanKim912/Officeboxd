@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { thunkCreateProfile } from "../../store/profile";
+import './CreateProfilePage.css'
 
 function CreateProfilePage() {
     const dispatch = useDispatch();
@@ -42,8 +43,8 @@ function CreateProfilePage() {
     }
 
     return (
-        <>
-            <h1>Create Profile</h1>
+        <div className="create-profile-container">
+            <h1 className="create-profile-header">Create Profile</h1>
             <form className="create-profile-form" onSubmit={handleSubmit}>
                 <label className='profile-form-field'>
                     Avatar:
@@ -87,11 +88,11 @@ function CreateProfilePage() {
                         ))}
                     </select>
                 </label>
-                <button type="submit">
+                <button className="create-profile-button" type="submit">
                     Create Profile
                 </button>
             </form>
-        </>
+        </div>
     )
 }
 
