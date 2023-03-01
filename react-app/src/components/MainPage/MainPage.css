@@ -1,0 +1,51 @@
+.main-body {
+    font-family: Graphik-Light-Web, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-review-poster {
+    width: 80px;
+    height: 120px;
+    border-radius: 5px;
+}
+
+.review-avatar-main {
+    height: 24px;
+    width: 24px;
+    border-radius: 12px;
+}
+
+.welcome-banner {
+    font-family: Graphik-Light-Web, sans-serif;
+    font-weight: 400;
+    color: rgb(170, 187, 204);
+    text-align: center;
+}
+
+.main-review-banner {
+    color: #9ab;
+}
+
+.review-card {
+    color: #9ab;
+    display: flex;
+    flex-direction: column;
+}
+
+.review-card-top {
+    display: flex;
+    flex-direction: row;
+}
+
+.review-card-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-avatar {
+    display: flex;
+    flex-direction: row;
+}

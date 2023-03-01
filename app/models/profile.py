@@ -24,5 +24,6 @@ class Profile (db.Model):
             'avatar_url': self.avatar_url,
             'location': self.location,
             'pronoun': self.pronoun,
-            'bio': self.bio
+            'bio': self.bio,
+            'user': self.user.to_dict()
         }

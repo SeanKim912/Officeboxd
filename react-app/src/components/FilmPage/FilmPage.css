@@ -39,3 +39,9 @@
     width: 230px;
     border-radius: 5px;
 }
+
+.review-avatar {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+}

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { thunkGetOneFilm } from "../../store/film";
 import { thunkGetMyReview } from "../../store/review";
+import { thunkGetFilmsReviews } from "../../store/review";
 import { useState } from "react";
 import OpenModalButton from "../OpenModalButton";
 import CreateReviewModal from "../CreateReviewModal";
@@ -14,13 +15,18 @@ const FilmPage = () => {
     const dispatch = useDispatch();
     const film = useSelector(state => state.film.currentFilm);
     const cast = film.actors;
+    const profile = useSelector(state => state.profile.currentUserProfile)
     const review = useSelector(state => state.review.currentReview);
+    const otherReviews = useSelector(state => state.review.filmsReviews);
+    const otherReviewsArr = Object.values(otherReviews);
+    const otherReviewsFiltered = otherReviewsArr.filter(review => review.profile_id !== profile.id)
     const [filmTab, setFilmTab] = useState("cast")
     const { filmId } = useParams();
 
     useEffect(() => {
         dispatch(thunkGetOneFilm(filmId));
         dispatch(thunkGetMyReview(filmId));
+        dispatch(thunkGetFilmsReviews(filmId));
     }, [dispatch])
 
     return (
@@ -112,6 +118,18 @@ const FilmPage = () => {
                         <div>{review.review_text}</div>
                     ) : (
                         <div>You haven't reviewed this film yet!</div>
+                    )}
+                    <h3>Other reviews</h3>
+                    {otherReviewsFiltered.length > 0 ? (
+                        otherReviewsFiltered.map((review) => (
+                            <div>
+                                <img className="review-avatar" src={review.profile.avatar_url} />
+                                <div>Review by {review.profile.user.username}</div>
+                                <div>{review.rating}/10</div>
+                                <div>{review.review_text}</div>
+                            </div>
+                        ))) : (
+                        <div>No one else has reviewed this film yet!</div>
                     )}
                 </div>
             </div>

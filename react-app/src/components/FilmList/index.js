@@ -15,7 +15,6 @@ const FilmList = () => {
 
     return (
         <>
-            <h1>Films List</h1>
             <div className="card-container">
                 <ul className="card-list">
                     {filmsArr.map((film) => {

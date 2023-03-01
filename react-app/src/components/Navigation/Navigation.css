@@ -15,10 +15,35 @@
 	margin: 0;
 }
 
+.alt-nav {
+	background-color: #14181c;
+	position: relative;
+	margin: 0px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	list-style-type: none;
+	height: 72px;
+}
+
 .logo {
 	text-decoration: none;
 	color:rgb(255, 255, 255);
 	font-family: Graphik-Regular-Web, sans-serif;
+	font-weight: 800;
+}
+
+#play1 {
+	color: #ff8000;
+}
+
+#play2 {
+	color: #00e054;
+}
+
+#play3 {
+	color: #40bcf4;
 }
 
 .title {
