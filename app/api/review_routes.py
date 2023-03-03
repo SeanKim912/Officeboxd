@@ -72,7 +72,6 @@ def edit_review():
         db.session.commit()
 
         return to_update_review.to_dict()
-    return {}
 
 @review_routes.route('/delete', methods=['DELETE'])
 @login_required

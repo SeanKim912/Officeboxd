@@ -24,15 +24,20 @@ const ProfilePage = () => {
 
     return (
         <div className="profile-container">
-            <h1>My Profile</h1>
-            <div>{user?.username}</div>
-            <NavLink to={'/edit-profile'}>
-                <button>Edit Profile</button>
-            </NavLink>
-            <img className="pfp" onError={addDefaultSrc} src={myProfile.avatar_url} />
-            <div>{myProfile.pronoun}</div>
-            <div>{myProfile.location}</div>
-            <div>{myProfile.bio}</div>
+            <div className="profile-banner">
+                <img className="pfp" onError={addDefaultSrc} src={myProfile.avatar_url} />
+                <div className="profile-banner-right">
+                    <div className="banner-right-top">
+                    <div>{user?.username}</div>
+                    <NavLink to={'/edit-profile'}>
+                        <button>EDIT PROFILE</button>
+                    </ NavLink>
+                    </div>
+                    <div>{myProfile.pronoun}</div>
+                    <div>{myProfile.bio}</div>
+                    <div>{myProfile.location}</div>
+                </div>
+            </div>
             <div className="my-review-container">
                 <div>MY REVIEWS</div>
                 {myReviews.length > 0 ? (

@@ -1,29 +1,157 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { thunkGetOneFilm } from "../../store/film";
 import { thunkGetMyReview } from "../../store/review";
 import { thunkGetFilmsReviews } from "../../store/review";
+import { thunkGetUserProfile } from "../../store/profile";
 import { useState } from "react";
 import OpenModalButton from "../OpenModalButton";
 import CreateReviewModal from "../CreateReviewModal";
 import EditReviewModal from "../EditReviewModal";
 import Cast from "../Cast";
+import ReactStars from "react-rating-stars-component"
 import './FilmPage.css'
 
 const FilmPage = () => {
     const dispatch = useDispatch();
     const film = useSelector(state => state.film.currentFilm);
     const cast = film.actors;
-    const profile = useSelector(state => state.profile.currentUserProfile)
+    const profile = useSelector(state => state.profile.currentUserProfile);
     const review = useSelector(state => state.review.currentReview);
     const otherReviews = useSelector(state => state.review.filmsReviews);
     const otherReviewsArr = Object.values(otherReviews);
-    const otherReviewsFiltered = otherReviewsArr.filter(review => review.profile_id !== profile.id)
-    const [filmTab, setFilmTab] = useState("cast")
+    const otherReviewsFiltered = otherReviewsArr.filter(review => review.profile_id !== profile.id);
+    const [filmTab, setFilmTab] = useState("cast");
     const { filmId } = useParams();
 
+    // const myRating = {
+    //     size: 30,
+    //     count: 5,
+    //     // value: (review.rating) / 2,
+    //     isHalf: true,
+    //     edit: false,
+    //     emptyIcon: <i className="far fa-star" />,
+    //     halfIcon: <i className="fa fa-star-half-alt" />,
+    //     filledIcon: <i className="fa fa-star" />
+    // }
+
+    const stars = () => {
+        if (review.rating === 1) {
+            return (
+                <>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </>
+            )
+        }
+        if (review.rating === 2) {
+            return (
+                <>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </>
+            )
+        }
+        if (review.rating === 3) {
+            return (
+                <>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </>
+            )
+        }
+        if (review.rating === 4) {
+            return (
+                <>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </>
+            )
+        }
+        if (review.rating === 5) {
+            return (
+                <>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </>
+            )
+        }
+        if (review.rating === 6) {
+            return (
+                <>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </>
+            )
+        }
+        if (review.rating === 7) {
+            return (
+                <>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                    <i class="fa-regular fa-star"></i>
+                </>
+            )
+        }
+        if (review.rating === 8) {
+            return (
+                <>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </>
+            )
+        }
+        if (review.rating === 9) {
+            return (
+                <>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </>
+            )
+        }
+        if (review.rating === 10) {
+            return (
+                <>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </>
+            )
+        }
+    }
+
+
     useEffect(() => {
+        dispatch(thunkGetUserProfile());
         dispatch(thunkGetOneFilm(filmId));
         dispatch(thunkGetMyReview(filmId));
         dispatch(thunkGetFilmsReviews(filmId));
@@ -89,9 +217,10 @@ const FilmPage = () => {
                                 )}
                             </div>
                             <div className="rating-container">
-                                Rating:
                                 {review.rating ? (
-                                    <div>{review.rating}/10</div>
+                                    <div className="stars-container">{stars()}</div>
+                                    // <ReactStars value={review.rating/2} {...myRating } />
+                                    // <div>{review.rating}/10</div>
                                 ) : (
                                     <div>Not rated yet!</div>
                                 )}

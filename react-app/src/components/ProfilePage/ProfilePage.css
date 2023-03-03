@@ -20,4 +20,21 @@
 
 .profile-container {
     color: #9ab;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 950px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-banner {
+    display: flex;
+    flex-direction: row;
+}
+
+.banner-right-top {
+    display: flex;
+    flex-direction: row;
 }
