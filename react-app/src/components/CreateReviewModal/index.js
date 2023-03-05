@@ -17,14 +17,16 @@ const CreateReviewModal = () => {
 
     const changeRating = {
         size: 30,
-        value: rating/2,
+        value: rating / 2,
+        color: 'lime',
+        activeColor: 'lime',
         count: 5,
         isHalf: true,
         emptyIcon: <i className="far fa-star" />,
         halfIcon: <i className="fa fa-star-half-alt" />,
         filledIcon: <i className="fa fa-star" />,
         onChange: newValue => {
-            setRating(newValue*2);
+            setRating(newValue * 2);
         }
     }
 
@@ -51,35 +53,37 @@ const CreateReviewModal = () => {
     return (
         <div className="review-form-container">
             <h2 className="create-review-header">Review this film</h2>
-        <form className="create-review-form" onSubmit={handleSubmit}>
-            <label className="review-form-field">
-                Like:
-                <input
-                    type='checkbox'
-                    value={liked}
-                    onChange={handleOnChange}
+            <form className="create-review-form" onSubmit={handleSubmit}>
+                <label className="review-form-field">
+                    Like:
+                    <input
+                        className="review-checkbox"
+                        type='checkbox'
+                        value={liked}
+                        onChange={handleOnChange}
                     />
-            </label>
-            <label className="review-form-field">
-                Rating:
-                <ReactStars { ...changeRating } />
-            </label>
-            <label className="review-form-field">
-                <textarea
-                    value={review_text}
-                    placeholder="Add a review..."
-                    rows="10"
-                    cols="25"
-                    maxLength={10000}
-                    onChange={(e) => setReview_text(e.target.value)}
-                    required
+                </label>
+                <label className="review-form-field">
+                    Rating:
+                    <ReactStars {...changeRating} />
+                </label>
+                <label className="review-form-field">
+                    <textarea
+                        className="review-textarea"
+                        value={review_text}
+                        placeholder="Add a review..."
+                        rows="10"
+                        cols="25"
+                        maxLength={10000}
+                        onChange={(e) => setReview_text(e.target.value)}
+                        required
                     />
-            </label>
-            <button className="review-button" type="submit">
-                SAVE
-            </button>
-        </form>
-                    </div>
+                </label>
+                <button className="review-button" type="submit">
+                    SAVE
+                </button>
+            </form>
+        </div>
     )
 }
 

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import FilmList from "../FilmList";
 import { thunkGetAllReviews } from "../../store/review";
 import { thunkGetUserProfile } from "../../store/profile";
+import ReactStars from "react-rating-stars-component";
 import './MainPage.css'
 
 const MainPage = () => {
@@ -32,7 +33,18 @@ const MainPage = () => {
                             <div>Review by {review.profile.user.username}</div>
                         </div>
                         <h2>{review.film.title} ({review.film.year})</h2>
-                        <div>{review.rating}/10</div>
+                        <ReactStars
+                            size={16}
+                            count={5}
+                            value={(review.rating) / 2}
+                            color={'lime'}
+                            activeColor={'lime'}
+                            isHalf={true}
+                            edit={false}
+                            emptyIcon={<i className="far fa-star" />}
+                            halfIcon={<i className="fa fa-star-half-alt" />}
+                            filledIcon={<i className="fa fa-star" />}
+                        />
                     </div>
                     </div>
                     <div>{review.review_text}</div>

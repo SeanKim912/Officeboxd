@@ -1,0 +1,18 @@
+.cast-list {
+    display: flex;
+    flex-direction: row;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.actor {
+    list-style-type: none;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 6px;
+    padding-right: 6px;
+    background-color: rgb(40, 48, 56);
+    border-radius: 3px;
+    margin-right: 5px;
+    font-size: 12px;
+}

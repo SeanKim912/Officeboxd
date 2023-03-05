@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useContext } from "react";
-import { useLocation, useHistory } from "react-router-dom";
+import { useState } from "react";
 import { useModal } from "../../context/Modal";
 import { thunkEditReview } from "../../store/review";
 import { thunkDeleteReview } from "../../store/review";
@@ -21,6 +20,8 @@ const EditReviewModal = () => {
     const changeRating = {
         size: 30,
         value: rating / 2,
+        color: 'lime',
+        activeColor: 'lime',
         count: 5,
         isHalf: true,
         emptyIcon: <i className="far fa-star" />,
@@ -81,6 +82,7 @@ const EditReviewModal = () => {
                 </label>
                 <label className="edit-form-field">
                     <textarea
+                        className="review-textarea"
                         value={review_text}
                         placeholder="Add a review..."
                         rows="10"

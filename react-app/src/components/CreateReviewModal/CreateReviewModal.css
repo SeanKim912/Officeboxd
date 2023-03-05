@@ -1,7 +1,7 @@
 .review-form-container {
     font-family: Graphik-Light-Web, sans-serif;
-    background-color: #14181c;
-    color: #667788;
+    background-color: #445566;
+    color: #9ab;
     margin: 0px;
     padding: 20px;
     display: flex;
@@ -38,4 +38,9 @@
     font-size: 1rem;
     font-weight: 400;
     margin-bottom: 5px;
+}
+
+.review-textarea {
+    background-color: #ccddee;
+    border-radius: 5px;
 }

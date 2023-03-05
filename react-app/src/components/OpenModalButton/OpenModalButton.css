@@ -1,11 +1,14 @@
 .dropdown-button {
-    color: #fffcf1;
+    color: #bbccdd;
     font-family: Graphik-Semibold-Web, sans-serif;
-    background-color: #00a11d;
+    background-color: transparent;
     border: none;
     border-radius: 5px;
-    width: 80px;
-    height: 28px;
     font-size: 1rem;
     font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.dropdown-button:hover {
+    color: #ffffff;
 }
