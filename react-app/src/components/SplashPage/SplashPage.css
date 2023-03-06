@@ -1,4 +1,43 @@
 .splash-page-container {
     color: rgb(170, 187, 204);
+    background-color: #14181c;
     font-family: Graphik-Regular-Web, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.splash-image-background {
+    width: 1280px;
+    height:600px;
+    z-index: 0;
+    background-image: url(https://64.media.tumblr.com/c03ab68b3e5d205933b167d3b12f1d43/tumblr_oeow8cl7Fx1vukkv8o10_1280.png);
+}
+
+.gradient-filter {
+    width: 1280px;
+    height: 600px;
+    z-index: 1;
+    background: linear-gradient(0deg, #14181c, transparent 20%), linear-gradient(90deg, #14181c, transparent 20%), linear-gradient(270deg, #14181c, transparent 20%);
+}
+
+.splash-text-container {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -100px;
+}
+
+.splash-text {
+    color: white;
+    font-family: TiemposHeadlineWeb-Bold, Georgia, serif;
+    font-size: 30px;
+    margin: 5px;
+}
+
+.caption {
+    color: #778899;
+    margin-top: 20px;
 }

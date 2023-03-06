@@ -1,17 +1,17 @@
 .create-profile-container {
     font-family: Graphik-Light-Web, sans-serif;
-    color: #667788;
+    color: #9ab;
     margin: 0px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    min-height: 100vh;
 }
 
 .create-profile-header {
     margin-top: 0px;
-    margin-bottom: 0px;
+    margin-bottom: 20px;
 }
 
 .create-profile-form {

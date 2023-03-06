@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { thunkGetUserProfile } from "../../store/profile";
 import { thunkGetAllReviews } from "../../store/review";
 import { NavLink } from "react-router-dom";
+import ReactStars from "react-rating-stars-component";
 import './ProfilePage.css'
 
 const ProfilePage = () => {
@@ -23,29 +24,52 @@ const ProfilePage = () => {
     }
 
     return (
-        <div className="profile-container">
-            <h1>My Profile</h1>
-            <div>{user?.username}</div>
-            <NavLink to={'/edit-profile'}>
-                <button>Edit Profile</button>
-            </NavLink>
-            <img className="pfp" onError={addDefaultSrc} src={myProfile.avatar_url} />
-            <div>{myProfile.pronoun}</div>
-            <div>{myProfile.location}</div>
-            <div>{myProfile.bio}</div>
-            <div className="my-review-container">
-                <div>MY REVIEWS</div>
-                {myReviews.length > 0 ? (
-                    myReviews.map((review) => (
-                        <>
-                            <img className="profile-review-poster" src={review.film.poster} />
-                            <div>{review.film.title} {review.film.year}</div>
-                            <div>{review.rating}/10</div>
-                            <div>{review.review_text}</div>
-                        </>
-                    ))) : (
-                    <div>You haven't reviewed any films yet!</div>
-                )}
+        <div className="profile-main-div">
+            <div className="profile-container">
+                <div className="profile-banner">
+                    <img className="pfp" onError={addDefaultSrc} src={myProfile.avatar_url} />
+                    <div className="profile-banner-right">
+                        <div className="banner-right-top">
+                            <h1 className="profile-page-username">{user?.username}</h1>
+                            <NavLink to={'/edit-profile'}>
+                                <button className="edit-profile-link-button">EDIT PROFILE</button>
+                            </ NavLink>
+                        </div>
+                        <div className="pronoun">{myProfile.pronoun}</div>
+                        <div className="bio">{myProfile.bio}</div>
+                        <div className="location">{myProfile.location}</div>
+                    </div>
+                </div>
+                <div className="my-review-container">
+                    <div className="my-review-header">MY REVIEWS</div>
+                    {myReviews.length > 0 ? (
+                        myReviews.map((review) => (
+                            <div className="profile-review-card">
+                                <img className="profile-review-poster" src={review.film.poster} />
+                                <div className="profile-review-right">
+                                    <div className="profile-title-year">
+                                        <h2 className="profile-film-title">{review.film.title}</h2>
+                                        <h2 className="profile-film-year">{review.film.year}</h2>
+                                    </div>
+                                    <ReactStars
+                                        size={16}
+                                        count={5}
+                                        value={(review.rating) / 2}
+                                        color={'lime'}
+                                        activeColor={'lime'}
+                                        isHalf={true}
+                                        edit={false}
+                                        emptyIcon={<i className="far fa-star" />}
+                                        halfIcon={<i className="fa fa-star-half-alt" />}
+                                        filledIcon={<i className="fa fa-star" />}
+                                    />
+                                    <div className="profile-review-text">{review.review_text}</div>
+                                </div>
+                            </div>
+                        ))) : (
+                        <div>You haven't reviewed any films yet!</div>
+                    )}
+                </div>
             </div>
         </div>
     )

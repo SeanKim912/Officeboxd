@@ -9,11 +9,10 @@ function Navigation({ isLoaded }) {
 	const dispatch = useDispatch();
 	const path = useLocation();
 	const sessionUser = useSelector(state => state.session.user);
-	const profile = useSelector(state => state.profile.currentUserProfile);
 
 	useEffect(() => {
 		sessionUser && dispatch(thunkGetUserProfile());
-	}, [dispatch]);
+	}, [dispatch, sessionUser]);
 
 	if (path.pathname === "/create-profile")
 		return <h1 className='alt-nav'>Complete the Form Below</h1>

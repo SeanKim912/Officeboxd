@@ -46,51 +46,55 @@ function CreateProfilePage() {
         <div className="create-profile-container">
             <h1 className="create-profile-header">Create Profile</h1>
             <form className="create-profile-form" onSubmit={handleSubmit}>
-                <label className='profile-form-field'>
-                    Avatar:
-                    <input
-                        type='url'
-                        value={avatarUrl}
-                        onChange={(e) => setAvatarUrl(e.target.value)}
-                        required
-                    />
-                </label>
-                <label className='profile-form-field'>
-                    Bio:
-                    <input
-                        type='text'
-                        value={bio}
-                        onChange={(e) => setBio(e.target.value)}
-                        required
-                        maxLength={500}
-                    />
-                </label>
-                <label className='profile-form-field'>
-                    Location:
-                    <input
-                        type='text'
-                        value={location}
-                        onChange={(e) => setLocation(e.target.value)}
-                        required
-                    />
-                </label>
-                <label className='profile-form-field'>
-                    Pronoun:
-                    <select
-                        type='text'
-                        name='pronoun'
-                        value={pronoun}
-                        onChange={(e) => setPronoun(e.target.value)}
-                        required
-                    >
-                        {pronounChoices.map((option) => (
-							<option key={option}>{option}</option>
-                        ))}
-                    </select>
-                </label>
-                <button className="create-profile-button" type="submit">
-                    Create Profile
-                </button>
+                <div className="entry-field">
+                    <label className='profile-form-field'>
+                        Avatar:
+                        <input
+                            type='url'
+                            value={avatarUrl}
+                            onChange={(e) => setAvatarUrl(e.target.value)}
+                            required
+                        />
+                    </label>
+                    <label className='profile-form-field'>
+                        Bio:
+                        <input
+                            type='text'
+                            value={bio}
+                            onChange={(e) => setBio(e.target.value)}
+                            required
+                            maxLength={500}
+                        />
+                    </label>
+                    <label className='profile-form-field'>
+                        Location:
+                        <input
+                            type='text'
+                            value={location}
+                            onChange={(e) => setLocation(e.target.value)}
+                            required
+                        />
+                    </label>
+                    <label className='profile-form-field'>
+                        Pronoun:
+                        <select
+                            type='text'
+                            name='pronoun'
+                            value={pronoun}
+                            onChange={(e) => setPronoun(e.target.value)}
+                            required
+                        >
+                            {pronounChoices.map((option) => (
+                                <option key={option}>{option}</option>
+                            ))}
+                        </select>
+                    </label>
+                </div>
+                <div className="profile-button-container">
+                    <button className="edit-profile-button" type="submit">
+                        Create Profile
+                    </button>
+                </div>
             </form>
         </div>
     )

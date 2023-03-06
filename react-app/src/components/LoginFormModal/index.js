@@ -12,9 +12,9 @@ function LoginFormModal() {
   const { closeModal } = useModal();
 
   const demoInput = () => {
-		setEmail("demo@aa.io");
-		setPassword("password");
-	};
+    setEmail("demo@aa.io");
+    setPassword("password");
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,7 +22,7 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
-        closeModal()
+      closeModal()
     }
   };
 
@@ -35,26 +35,30 @@ function LoginFormModal() {
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label className="login-form-field">
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label className="login-form-field">
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button className="login-button" type="submit">LOG IN</button>
-        <button className='login-button' onClick={demoInput}>DEMO USER</button>
+        <div className="entry-field">
+          <label className="login-form-field">
+            Email
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </label>
+          <label className="login-form-field">
+            Password
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </label>
+        </div>
+        <div className="profile-button-container">
+          <button className='edit-profile-button' type="submit">LOG IN</button>
+          <button className='edit-profile-button' onClick={demoInput}>DEMO USER</button>
+        </div>
       </form>
     </div>
   );
