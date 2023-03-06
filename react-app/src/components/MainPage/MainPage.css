@@ -3,41 +3,62 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    min-height: 100vh;
+}
+
+.main-review-container {
+    width: 950px;
 }
 
 .main-review-poster {
     width: 80px;
     height: 120px;
     border-radius: 5px;
+    border: 1px solid #445566;
+    margin-right: 20px;
 }
 
 .review-avatar-main {
     height: 24px;
     width: 24px;
     border-radius: 12px;
+    border: 1px solid #445566;
+    margin-right: 5px;
 }
 
 .welcome-banner {
     font-family: Graphik-Light-Web, sans-serif;
-    font-weight: 400;
+    font-weight: lighter;
     color: rgb(170, 187, 204);
     text-align: center;
 }
 
 .main-review-banner {
     color: #9ab;
+    font-size: 13px;
+    font-weight: 400;
+    border-bottom: 1px solid #445566;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
 }
 
 .review-card {
     color: #9ab;
     display: flex;
     flex-direction: column;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #2c3440;
 }
 
 .review-card-top {
     display: flex;
     flex-direction: row;
+}
+
+.review-main-username {
+    padding-top: 3px;
+    font-weight: bold;
 }
 
 .review-card-right {
@@ -48,4 +69,26 @@
 .name-avatar {
     display: flex;
     flex-direction: row;
+}
+
+.main-review-text {
+    margin-top: 30px;
+    font-family: TiemposTextWeb-Regular, Georgia, serif;
+}
+
+.title-year {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.main-film-title {
+    margin-right: 5px;
+    font-family: TiemposTextWeb-Semibold, Georgia,serif;
+    color: white;
+}
+
+.main-film-year {
+    font-weight: lighter;
+    font-size: 18px;
 }

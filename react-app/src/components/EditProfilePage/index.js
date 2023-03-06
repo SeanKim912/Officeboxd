@@ -46,17 +46,18 @@ function EditProfilePage() {
     }
 
     async function handleDelete() {
-		const awaitedData = await dispatch(thunkDeleteProfile());
-		if (awaitedData) {
-			await dispatch(logout());
-			history.push("/");
-		}
-	}
+        const awaitedData = await dispatch(thunkDeleteProfile());
+        if (awaitedData) {
+            await dispatch(logout());
+            history.push("/");
+        }
+    }
 
     return (
         <div className="edit-profile-container">
             <h1 className="edit-profile-header">Edit Profile</h1>
             <form className="edit-profile-form" onSubmit={handleSubmit}>
+                <div className="entry-field">
                     <label className='edit-profile-field'>
                         Avatar:
                         <input
@@ -68,12 +69,13 @@ function EditProfilePage() {
                     </label>
                     <label className='edit-profile-field'>
                         Bio:
-                        <input
-                            type='text'
+                        <textarea
                             value={bio}
                             onChange={(e) => setBio(e.target.value)}
                             required
                             maxLength={500}
+                            rows="5"
+                            cols="25"
                         />
                     </label>
                     <label className='edit-profile-field'>
@@ -99,13 +101,16 @@ function EditProfilePage() {
                             ))}
                         </select>
                     </label>
+                </div>
+                <div className="profile-button-container">
                     <button className="edit-profile-button" type="submit">
-                        Edit Profile
+                        EDIT PROFILE
                     </button>
                     <button className="edit-profile-button" onClick={handleDelete}>
-                        Delete Profile
+                        DELETE PROFILE
                     </button>
-                </form>
+                </div>
+            </form>
         </div>
     )
 }

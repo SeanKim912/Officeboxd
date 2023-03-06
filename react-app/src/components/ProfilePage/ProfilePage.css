@@ -3,19 +3,23 @@
     width: 100px;
     border-radius: 50px;
     border: 2px solid grey;
+    margin-right: 20px;
 }
 
-.pfp:hover {
-    height: 100px;
-    width: 100px;
-    border-radius: 50px;
-    border: 2px solid white
+.profile-main-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
 }
 
 .profile-review-poster {
     width: 75px;
     height: 110px;
     border-radius: 5px;
+    border: 1px solid #445566;
+    margin-right: 20px;
+
 }
 
 .profile-container {
@@ -33,9 +37,103 @@
 .profile-banner {
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 950px;
+    margin-bottom: 30px;
+}
+
+.profile-page-username {
+    color: white;
+    font-size: 22px;
+    margin-top: 3px;
+    margin-right: 25px;
+    margin-bottom: 10px;
 }
 
 .banner-right-top {
     display: flex;
     flex-direction: row;
+}
+
+.edit-profile-link-button {
+    background-color: #567;
+    border: none;
+    border-radius: 5px;
+    color: #c8d4e0;
+    cursor: pointer;
+    font-family: Graphik-Semibold-Web, sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    height: 25px;
+    width: 105px;
+}
+
+.edit-profile-link-button:hover {
+    color: white;
+    background-color: #667788;
+}
+
+.pronoun {
+    font-size: 13px;
+    color: rgb(102, 119, 136);
+    margin-bottom: 10px;
+}
+
+.bio {
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.location {
+    font-size: 13px;
+    color: rgb(102, 119, 136);
+}
+
+.my-review-header {
+    border-bottom: 1px solid #445566;
+    font-size: 13px;
+    width: 950px;
+    padding-bottom: 5px;
+}
+
+.my-review-container {
+    width: 950px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.profile-review-card {
+    display: flex;
+    flex-direction: row;
+    width: 950px;
+    margin-top: 10px;
+    border-bottom: 1px solid #445566;
+    padding-bottom: 20px;
+}
+
+.profile-title-year {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.profile-film-title {
+    margin-top: 0px;
+    margin-right: 5px;
+    font-family: TiemposTextWeb-Semibold, Georgia,serif;
+    color: white;
+}
+
+.profile-film-year {
+    margin-top: 0px;
+    font-weight: lighter;
+    font-size: 18px;
+}
+
+.profile-review-text {
+    margin-top: 20px;
+    font-family: TiemposTextWeb-Regular, Georgia, serif;
 }

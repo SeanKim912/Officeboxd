@@ -22,34 +22,39 @@ const MainPage = () => {
         <div className="main-body">
             <h1 className="welcome-banner">Welcome to Officeboxd! Here's what we've been watching...</h1>
             <FilmList />
-            <h2 className="main-review-banner">REVIEWS FROM OTHER USERS</h2>
-            {notMyReviews.map((review) => (
-                <div className="review-card">
-                    <div className="review-card-top">
-                    <img className="main-review-poster" src={review.film.poster} />
-                    <div className="review-card-right">
-                        <div className="name-avatar">
-                            <img className="review-avatar-main" src={review.profile.avatar_url} />
-                            <div>Review by {review.profile.user.username}</div>
+            <div className="main-review-container">
+                <h2 className="main-review-banner">REVIEWS FROM OTHER USERS</h2>
+                {notMyReviews.map((review) => (
+                    <div className="review-card">
+                        <div className="review-card-top">
+                            <img className="main-review-poster" src={review.film.poster} />
+                            <div className="review-card-right">
+                                <div className="name-avatar">
+                                    <img className="review-avatar-main" src={review.profile.avatar_url} />
+                                    <div className="review-main-username">{review.profile.user.username}</div>
+                                </div>
+                                <div className="title-year">
+                                    <h2 className="main-film-title">{review.film.title}</h2>
+                                    <h2 className="main-film-year">{review.film.year}</h2>
+                                </div>
+                                <ReactStars
+                                    size={16}
+                                    count={5}
+                                    value={(review.rating) / 2}
+                                    color={'lime'}
+                                    activeColor={'lime'}
+                                    isHalf={true}
+                                    edit={false}
+                                    emptyIcon={<i className="far fa-star" />}
+                                    halfIcon={<i className="fa fa-star-half-alt" />}
+                                    filledIcon={<i className="fa fa-star" />}
+                                />
+                            </div>
                         </div>
-                        <h2>{review.film.title} ({review.film.year})</h2>
-                        <ReactStars
-                            size={16}
-                            count={5}
-                            value={(review.rating) / 2}
-                            color={'lime'}
-                            activeColor={'lime'}
-                            isHalf={true}
-                            edit={false}
-                            emptyIcon={<i className="far fa-star" />}
-                            halfIcon={<i className="fa fa-star-half-alt" />}
-                            filledIcon={<i className="fa fa-star" />}
-                        />
+                        <div className="main-review-text">{review.review_text}</div>
                     </div>
-                    </div>
-                    <div>{review.review_text}</div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     )
 }

@@ -5,6 +5,8 @@
     justify-content: space-between;
     color: #9ab;
     font-family: Graphik-Light-Web, sans-serif;
+    min-height: 100vh;
+    padding-bottom: 50px;
 }
 
 .still {
@@ -223,6 +225,9 @@
 .other-reviews-card {
     display: flex;
     flex-direction: row;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #2c3440;
 }
 
 .other-review-card-right {
