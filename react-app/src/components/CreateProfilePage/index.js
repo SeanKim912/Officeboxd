@@ -1,6 +1,6 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { thunkCreateProfile } from "../../store/profile";
 import './CreateProfilePage.css'
 
@@ -8,7 +8,10 @@ function CreateProfilePage() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const [avatarUrl, setAvatarUrl] = useState("");
+    const [image, setImage] = useState(null);
+    const [imageLoading, setImageLoading] = useState(false);
+
+    // const [avatarUrl, setAvatarUrl] = useState("");
     const [bio, setBio] = useState("");
     const [location, setLocation] = useState("");
     const [pronoun, setPronoun] = useState("");
@@ -28,31 +31,40 @@ function CreateProfilePage() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const formData = new FormData();
+        formData.append("image", image);
 
-        let avatar_url = avatarUrl
+        setImageLoading(true);
+
+        // let avatar_url = avatarUrl
 
         const data = {
-            avatar_url,
+            avatar_url: image,
             bio,
             location,
             pronoun
         }
 
         await dispatch(thunkCreateProfile(data));
+        setImageLoading(false);
         history.push('/')
     }
 
     return (
         <div className="create-profile-container">
             <h1 className="create-profile-header">Create Profile</h1>
-            <form className="create-profile-form" onSubmit={handleSubmit}>
+            <form
+                className="create-profile-form"
+                encType="multipart/form-data"
+                onSubmit={handleSubmit}
+            >
                 <div className="entry-field">
                     <label className='profile-form-field'>
                         Avatar:
                         <input
-                            type='url'
-                            value={avatarUrl}
-                            onChange={(e) => setAvatarUrl(e.target.value)}
+                            type='file'
+                            accept="image/*"
+                            onChange={(e) => setImage(e.target.files[0])}
                             required
                         />
                     </label>
@@ -95,6 +107,7 @@ function CreateProfilePage() {
                         Create Profile
                     </button>
                 </div>
+                {(imageLoading) && <p>Loading...</p>}
             </form>
         </div>
     )

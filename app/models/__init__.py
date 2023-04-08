@@ -5,4 +5,5 @@ from .film import Film
 from .review import Review
 from .actor import Actor
 from .films_actors import films_actors
+from .collection import Collection
 from .db import environment, SCHEMA

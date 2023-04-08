@@ -38,3 +38,7 @@
     font-size: 1rem;
     font-weight: 400;
 }
+
+#modal {
+    z-index: 5;
+}

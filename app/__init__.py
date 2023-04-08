@@ -10,6 +10,7 @@ from .api.auth_routes import auth_routes
 from .api.profile_routes import profile_routes
 from .api.film_routes import film_routes
 from .api.review_routes import review_routes
+from .api.collection_routes import collection_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -34,6 +35,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(profile_routes, url_prefix='/api/profile')
 app.register_blueprint(film_routes, url_prefix='/api/film')
 app.register_blueprint(review_routes, url_prefix='/api/review')
+app.register_blueprint(collection_routes, url_prefix='/api/collection')
 db.init_app(app)
 Migrate(app, db)
 

@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, session, request
 from flask_login import login_required, current_user, logout_user
 from app.models import Profile, User, db
 from app.forms import ProfileForm
+from app.s3_helpers import (upload_file_to_s3, get_unique_filename)
 
 profile_routes = Blueprint('profile', __name__)
 
@@ -34,9 +35,23 @@ def create_profile():
     form = ProfileForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+
+        image = form.data['image']
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+
+        print("RELEVANT", image, image.filename, upload)
+
+        if "url" not in upload:
+            return upload, 400
+
+        url = upload['url']
+
+        print("WHAT URL", url)
+
         user_profile = Profile(
             user_id=current_user.id,
-            avatar_url=form.data['avatar_url'],
+            avatar_url=url,
             bio=form.data['bio'],
             location=form.data['location'],
             pronoun=form.data['pronoun']

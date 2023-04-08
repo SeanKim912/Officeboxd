@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkGetUserProfile } from "../../store/profile";
 import { thunkGetAllReviews } from "../../store/review";
+import { thunkGetAllCollections } from "../../store/collection";
 import { NavLink } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 import './ProfilePage.css'
@@ -17,6 +18,7 @@ const ProfilePage = () => {
     useEffect(() => {
         dispatch(thunkGetUserProfile());
         dispatch(thunkGetAllReviews());
+        dispatch(thunkGetAllCollections(user.id));
     }, [dispatch])
 
     function addDefaultSrc(ev) {
