@@ -10,6 +10,8 @@ import ProfilePage from "./components/ProfilePage";
 import CreateProfilePage from "./components/CreateProfilePage";
 import EditProfilePage from "./components/EditProfilePage";
 import FilmPage from "./components/FilmPage";
+import CollectionPage from "./components/CollectionPage";
+import CreateCollectionPage from "./components/CreateCollectionPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,8 +28,13 @@ function App() {
           <Route exact path="/film/:filmId">
             <FilmPage />
           </Route>
-          <
-            Route exact path="/review/:reviewId">
+          <Route exact path="/review/:reviewId">
+          </Route>
+          <Route exact path="/collection/create">
+            <CreateCollectionPage />
+          </Route>
+          <Route exact path="/collection/:collectionId">
+            <CollectionPage />
           </Route>
           <Route path="/login" >
             <LoginFormPage />

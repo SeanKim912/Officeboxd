@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { thunkGetUserProfile } from "../../store/profile";
 import { thunkGetAllReviews } from "../../store/review";
 import { thunkGetAllCollections } from "../../store/collection";
+import { thunkGetAllFilms } from "../../store/film";
 import { NavLink } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 import './ProfilePage.css'
@@ -14,10 +15,15 @@ const ProfilePage = () => {
     const reviews = useSelector(state => state.review.allReviews);
     const reviewsArr = Object.values(reviews);
     const myReviews = reviewsArr.filter(review => review.profile_id === myProfile.id);
+    const films = useSelector(state => state.film.allFilms);
+    const filmsArr = Object.values(films);
+    const collections = useSelector(state => state.collection.allCollections);
+    const collectionsArr = Object.values(collections);
 
     useEffect(() => {
         dispatch(thunkGetUserProfile());
         dispatch(thunkGetAllReviews());
+        dispatch(thunkGetAllFilms());
         dispatch(thunkGetAllCollections(user.id));
     }, [dispatch])
 
@@ -41,6 +47,23 @@ const ProfilePage = () => {
                         <div className="bio">{myProfile.bio}</div>
                         <div className="location">{myProfile.location}</div>
                     </div>
+                </div>
+                <div className="my-review-container">
+                    <div className="my-review-header">MY COLLECTIONS</div>
+                    {collectionsArr.length > 0 ? (
+                        collectionsArr.map((collection) => (
+                            <div className="collection-card">
+                                <NavLink exact to={`/collection/${collection.id}`}>
+                                    <h2>{collection.name}</h2>
+                                    <div>{collection.description}</div>
+                                </NavLink>
+                            </div>
+                        ))) : (
+                        <div>You haven't made any collections yet!</div>
+                    )}
+                    <NavLink exact to={'/collection/create'}>
+                        <button>Add a collection...</button>
+                    </NavLink>
                 </div>
                 <div className="my-review-container">
                     <div className="my-review-header">MY REVIEWS</div>

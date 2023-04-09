@@ -1,5 +1,6 @@
 const ONE_COLLECTION = 'collection/one'
 const ALL_COLLECTIONS = 'collection/all'
+const CREATE = 'collection/create'
 
 const getCollectionAction = (collection) => ({
     type: ONE_COLLECTION,
@@ -9,6 +10,11 @@ const getCollectionAction = (collection) => ({
 const allCollectionsAction = (collections) => ({
     type: ALL_COLLECTIONS,
     collections
+})
+
+const createCollectionAction = (collection) => ({
+    type: CREATE,
+    collection
 })
 
 export const thunkGetCollection = (id) => async (dispatch) => {
@@ -33,9 +39,25 @@ export const thunkGetAllCollections = (profile_id) => async (dispatch) => {
     }
 }
 
+export const thunkCreateCollection = (collection) => async (dispatch) => {
+    const response = await fetch('/api/collection/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(collection)
+    });
+
+    if (response.ok) {
+        const newCollection = await response.json();
+        dispatch(createCollectionAction(newCollection));
+
+        return newCollection;
+    }
+}
+
 const normalize = (arr) => {
     const resultObj = {};
     arr.forEach((element) => (resultObj[element.id] = element));
+
     return resultObj;
 }
 
@@ -54,6 +76,10 @@ const collectionReducer = (state = initialState, action) => {
         case ALL_COLLECTIONS: {
             newState.currentCollection = {}
             newState.allCollections = normalize(action.collections);
+            return newState;
+        }
+        case CREATE: {
+            newState.currentCollection = { ...action.collection };
             return newState;
         }
         default: {

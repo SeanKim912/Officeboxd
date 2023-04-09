@@ -10,7 +10,6 @@ function CreateProfilePage() {
 
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
-
     // const [avatarUrl, setAvatarUrl] = useState("");
     const [bio, setBio] = useState("");
     const [location, setLocation] = useState("");

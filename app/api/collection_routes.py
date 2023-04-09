@@ -18,4 +18,22 @@ def all_collections(id):
 
     return collections_arr
 
+@collection_routes.route('/create', methods=['POST'])
+@login_required
+def create_collection():
+    my_id = current_user.id
 
+    form = CollectionForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        new_collection = Collection(
+            profile_id=my_id,
+            name=form.data['name'],
+            description=form.data['description'],
+            films=form.data['films']
+        )
+
+        db.session.add(new_collection)
+        db.session.commit()
+
+        return new_collection.to_dict()
