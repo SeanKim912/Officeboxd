@@ -1,6 +1,8 @@
 const ONE_COLLECTION = 'collection/one'
 const ALL_COLLECTIONS = 'collection/all'
 const CREATE = 'collection/create'
+const EDIT = 'collection/edit'
+const DELETE = 'collection/delete'
 
 const getCollectionAction = (collection) => ({
     type: ONE_COLLECTION,
@@ -14,6 +16,16 @@ const allCollectionsAction = (collections) => ({
 
 const createCollectionAction = (collection) => ({
     type: CREATE,
+    collection
+})
+
+const editCollectionAction = (collection) => ({
+    type: EDIT,
+    collection
+})
+
+const deleteCollectionAction = (collection) => ({
+    type: DELETE,
     collection
 })
 
@@ -54,6 +66,36 @@ export const thunkCreateCollection = (collection) => async (dispatch) => {
     }
 }
 
+export const thunkEditCollection = (collection) => async (dispatch) => {
+    const response = await fetch('/api/collection/edit', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(collection)
+    });
+
+    if (response.ok) {
+        const editedCollection = await response.json();
+        dispatch(editCollectionAction(editedCollection));
+
+        return editedCollection;
+    }
+}
+
+export const thunkDeleteCollection = (collection) => async (dispatch) => {
+    const response = await fetch('/api/collection/delete', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify(collection)
+    });
+
+    if (response.ok) {
+        const deletedCollection = await response.json();
+        dispatch(deleteCollectionAction(deletedCollection));
+
+        return deletedCollection;
+    }
+}
+
 const normalize = (arr) => {
     const resultObj = {};
     arr.forEach((element) => (resultObj[element.id] = element));
@@ -80,6 +122,15 @@ const collectionReducer = (state = initialState, action) => {
         }
         case CREATE: {
             newState.currentCollection = { ...action.collection };
+            return newState;
+        }
+        case EDIT: {
+            newState.currentCollection = { ...action.collection };
+            newState.allCollections[action.collection.id] = { ...action.collection }
+            return newState;
+        }
+        case DELETE: {
+            newState.currentCollection = {}
             return newState;
         }
         default: {

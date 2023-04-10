@@ -2,17 +2,18 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { thunkGetAllFilms } from "../../store/film";
-import { thunkCreateCollection } from "../../store/collection";
+import { thunkEditCollection } from "../../store/collection";
 
-const CreateCollectionPage = () => {
+const EditCollectionPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const allFilms = useSelector(state => state.film.allFilms);
     const filmsArr = Object.values(allFilms);
+    const collection = useSelector(state => state.collection.currentCollection);
 
-    const [name, setName] = useState("");
-    const [description, setDescription] = useState("");
-    const [preSubmitFilm, setPreSubmitFilm] = useState([]);
+    const [name, setName] = useState(collection.name);
+    const [description, setDescription] = useState(collection.description);
+    const [preSubmitFilm, setPreSubmitFilm] = useState(collection.films.split(",").map(str => Number(str)));
     const [toggle, setToggle] = useState(true);
     const [errors, setErrors] = useState([])
 
@@ -20,14 +21,14 @@ const CreateCollectionPage = () => {
         e.preventDefault();
 
         const data = {
+            id: collection.id,
             name,
             description,
             films: preSubmitFilm.join(",")
         }
 
-
         if (preSubmitFilm.length >= 2) {
-            await dispatch(thunkCreateCollection(data))
+            await dispatch(thunkEditCollection(data))
             history.push('/my-profile')
         } else {
             setErrors(["Collections must have at least two films"])
@@ -41,7 +42,7 @@ const CreateCollectionPage = () => {
 
     return (
         <div className="create-collection-container">
-            <h1 className="create-profile-header">Create Collection</h1>
+            <h1 className="create-profile-header">Edit Collection</h1>
             <form
                 className="create-collection-form"
                 onSubmit={handleSubmit}
@@ -111,7 +112,7 @@ const CreateCollectionPage = () => {
                 </div>
                 <div className="profile-button-container">
                     <button className="edit-profile-button" type="submit">
-                        Create Collection
+                        Edit Collection
                     </button>
                 </div>
             </form>
@@ -119,4 +120,4 @@ const CreateCollectionPage = () => {
     )
 }
 
-export default CreateCollectionPage;
+export default EditCollectionPage;

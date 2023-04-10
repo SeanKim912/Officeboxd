@@ -12,6 +12,7 @@ import EditProfilePage from "./components/EditProfilePage";
 import FilmPage from "./components/FilmPage";
 import CollectionPage from "./components/CollectionPage";
 import CreateCollectionPage from "./components/CreateCollectionPage";
+import EditCollectionPage from "./components/EditCollectionPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route exact path="/collection/create">
             <CreateCollectionPage />
+          </Route>
+          <Route exact path="/collection/edit">
+            <EditCollectionPage />
           </Route>
           <Route exact path="/collection/:collectionId">
             <CollectionPage />
