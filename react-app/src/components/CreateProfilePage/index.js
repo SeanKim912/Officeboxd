@@ -30,21 +30,25 @@ function CreateProfilePage() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        debugger
         const formData = new FormData();
         formData.append("image", image);
+        formData.append("bio", bio);
+        formData.append("location", location);
+        formData.append("pronoun", pronoun)
 
         setImageLoading(true);
 
         // let avatar_url = avatarUrl
 
-        const data = {
-            avatar_url: image,
-            bio,
-            location,
-            pronoun
-        }
+        // const data = {
+        //     avatar_url: image,
+        //     bio,
+        //     location,
+        //     pronoun
+        // }
 
-        await dispatch(thunkCreateProfile(data));
+        await dispatch(thunkCreateProfile(formData));
         setImageLoading(false);
         history.push('/')
     }

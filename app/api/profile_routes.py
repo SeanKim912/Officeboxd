@@ -34,9 +34,11 @@ def self():
 def create_profile():
     form = ProfileForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    # print("AAAAA", form["image"].data)
+    # print("BBBBB", request.form.get("image"))
     if form.validate_on_submit():
 
-        image = form.data['image']
+        image = form["image"].data
         image.filename = get_unique_filename(image.filename)
         upload = upload_file_to_s3(image)
 
@@ -52,9 +54,9 @@ def create_profile():
         user_profile = Profile(
             user_id=current_user.id,
             avatar_url=url,
-            bio=form.data['bio'],
-            location=form.data['location'],
-            pronoun=form.data['pronoun']
+            bio=form["bio"].data,
+            location=form['location'].data,
+            pronoun=form['pronoun'].data
         )
 
         db.session.add(user_profile)

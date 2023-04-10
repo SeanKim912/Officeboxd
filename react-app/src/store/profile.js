@@ -36,11 +36,12 @@ export const thunkGetUserProfile = () => async (dispatch) => {
     }
 }
 
-export const thunkCreateProfile = (profile) => async (dispatch) => {
+export const thunkCreateProfile = (formData) => async (dispatch) => {
+    console.log("AAAAA", formData["image"])
     const response = await fetch('/api/profile/create', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(profile)
+        // headers: { 'Content-Type': 'application/json' },
+        body: formData
     });
 
     if (response.ok) {
