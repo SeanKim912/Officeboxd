@@ -1,5 +1,6 @@
 const ALL_FILMS = 'film/all'
 const GET_FILM = 'film/one'
+const CREATE_FILM = 'film/create'
 
 const allFilmsAction = (film) => ({
     type: ALL_FILMS,
@@ -8,6 +9,11 @@ const allFilmsAction = (film) => ({
 
 const oneFilmAction = (film) => ({
     type: GET_FILM,
+    film
+})
+
+const createFilmAction = (film) => ({
+    type: CREATE_FILM,
     film
 })
 
@@ -37,6 +43,19 @@ export const thunkGetOneFilm = (filmId) => async (dispatch) => {
     }
 }
 
+export const thunkCreateFilm = (formData) => async (dispatch) => {
+    const response = await fetch('/api/film/create', {
+        method: 'POST',
+        body: formData
+    });
+
+    if (response.ok) {
+        const filmData = await response.json();
+        dispatch(createFilmAction(filmData));
+
+        return filmData;
+    }
+}
 
 const normalize = (arr) => {
 	const resultObj = {};
@@ -59,6 +78,10 @@ const filmReducer = (state = initialState, action) => {
             return newState;
         }
         case GET_FILM: {
+            newState.currentFilm = { ...action.film };
+            return newState;
+        }
+        case CREATE_FILM: {
             newState.currentFilm = { ...action.film };
             return newState;
         }

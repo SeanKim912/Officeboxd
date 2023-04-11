@@ -30,7 +30,6 @@ function CreateProfilePage() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        debugger
         const formData = new FormData();
         formData.append("image", image);
         formData.append("bio", bio);

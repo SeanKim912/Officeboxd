@@ -13,6 +13,7 @@ import FilmPage from "./components/FilmPage";
 import CollectionPage from "./components/CollectionPage";
 import CreateCollectionPage from "./components/CreateCollectionPage";
 import EditCollectionPage from "./components/EditCollectionPage";
+import CreateFilmPage from "./components/CreateFilmPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,6 +27,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path="/film/create">
+            <CreateFilmPage />
+          </Route>
           <Route exact path="/film/:filmId">
             <FilmPage />
           </Route>

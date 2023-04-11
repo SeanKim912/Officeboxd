@@ -34,22 +34,16 @@ def self():
 def create_profile():
     form = ProfileForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    # print("AAAAA", form["image"].data)
-    # print("BBBBB", request.form.get("image"))
     if form.validate_on_submit():
 
         image = form["image"].data
         image.filename = get_unique_filename(image.filename)
         upload = upload_file_to_s3(image)
 
-        print("RELEVANT", image, image.filename, upload)
-
         if "url" not in upload:
             return upload, 400
 
         url = upload['url']
-
-        print("WHAT URL", url)
 
         user_profile = Profile(
             user_id=current_user.id,
