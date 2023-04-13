@@ -50,11 +50,11 @@ export const thunkCreateProfile = (formData) => async (dispatch) => {
     }
 }
 
-export const thunkEditProfile = (profile) => async (dispatch) => {
+export const thunkEditProfile = (formData) => async (dispatch) => {
+    console.log("BBBBB", formData)
     const response = await fetch('/api/profile/edit', {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(profile)
+        body: formData
     });
 
     if (response.ok) {

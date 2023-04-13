@@ -2,19 +2,19 @@ from app.models import db, Collection, environment, SCHEMA
 
 def seed_collections():
     demos = Collection(
-        profile_id=1,
+        profile_id=2,
         name="Greatest of All Time",
         description="Name says it all",
         films="1,2,3"
     )
     marnies = Collection(
-        profile_id=1,
+        profile_id=2,
         name="Movies I Hate",
         description="Avoid these movies. Spare your eyes and ears!",
         films="3,5"
     )
     bobbies = Collection(
-        profile_id=1,
+        profile_id=2,
         name="Movies I Have Seen",
         description="I have seen exactly four movies in my life, and no others.",
         films="2,3,4,5"

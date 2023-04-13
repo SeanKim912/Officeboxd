@@ -10,7 +10,6 @@ function CreateProfilePage() {
 
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
-    // const [avatarUrl, setAvatarUrl] = useState("");
     const [bio, setBio] = useState("");
     const [location, setLocation] = useState("");
     const [pronoun, setPronoun] = useState("");
@@ -34,18 +33,9 @@ function CreateProfilePage() {
         formData.append("image", image);
         formData.append("bio", bio);
         formData.append("location", location);
-        formData.append("pronoun", pronoun)
+        formData.append("pronoun", pronoun);
 
         setImageLoading(true);
-
-        // let avatar_url = avatarUrl
-
-        // const data = {
-        //     avatar_url: image,
-        //     bio,
-        //     location,
-        //     pronoun
-        // }
 
         await dispatch(thunkCreateProfile(formData));
         setImageLoading(false);
@@ -72,12 +62,13 @@ function CreateProfilePage() {
                     </label>
                     <label className='profile-form-field'>
                         Bio:
-                        <input
-                            type='text'
+                        <textarea
                             value={bio}
                             onChange={(e) => setBio(e.target.value)}
                             required
                             maxLength={500}
+                            rows="5"
+                            cols="25"
                         />
                     </label>
                     <label className='profile-form-field'>

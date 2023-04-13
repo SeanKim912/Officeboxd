@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory, NavLink } from "react-router-dom";
 import { useState } from "react";
-import { thunkGetOneFilm } from "../../store/film";
+import { thunkGetOneFilm, thunkDeleteFilm } from "../../store/film";
 import { thunkGetMyReview } from "../../store/review";
 import { thunkGetFilmsReviews } from "../../store/review";
 import { thunkGetUserProfile } from "../../store/profile";
@@ -15,6 +15,7 @@ import './FilmPage.css'
 
 const FilmPage = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const film = useSelector(state => state.film.currentFilm);
     const cast = film.actors;
     const profile = useSelector(state => state.profile.currentUserProfile);
@@ -151,6 +152,15 @@ const FilmPage = () => {
         }
     }
 
+    const handleDelete = async () => {
+        const data = {
+            id: film.id
+        }
+
+        await dispatch(thunkDeleteFilm(data));
+        history.push('/');
+    }
+
 
     useEffect(() => {
         dispatch(thunkGetUserProfile());
@@ -162,10 +172,6 @@ const FilmPage = () => {
     return (
         <>
             <div className="filmPageContainer">
-                {/* <div className="still" style={{
-                    backgroundImage: `url(${film.still}), linear-gradient(to bottom, rgba(255, 255, 255, 0) 90%, #fff 100%)`
-                    }}>
-                </div> */}
                 <img className="still" src={film.still} />
                 <div className="main-row">
                     <img className="left-poster" src={film.poster} />
@@ -283,6 +289,16 @@ const FilmPage = () => {
                                     </OpenModalButton>
                                 )}
                             </div>
+                            {profile.id === 1 && (
+                                <>
+                                    <NavLink exact to={'/film/edit'}>
+                                        <button>Edit this film</button>
+                                    </NavLink>
+                                    <div>
+                                        <button onClick={handleDelete}>Delete this film</button>
+                                    </div>
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -300,8 +316,8 @@ const FilmPage = () => {
                                 <img className="review-avatar" src={review.profile.avatar_url} />
                                 <div className="other-reviews-card-right">
                                     <div className="review-card-right-top">
-                                        <div style={{marginRight: 5, color: "#678", fontSize: 13}}>Review by</div>
-                                        <div style={{marginRight: 5, fontSize: 13, fontWeight: 750}}>{review.profile.user.username}</div>
+                                        <div style={{ marginRight: 5, color: "#678", fontSize: 13 }}>Review by</div>
+                                        <div style={{ marginRight: 5, fontSize: 13, fontWeight: 750 }}>{review.profile.user.username}</div>
                                         <ReactStars
                                             size={16}
                                             count={5}

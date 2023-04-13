@@ -1,37 +1,40 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
-import { thunkCreateFilm } from "../../store/film";
+import { thunkEditFilm } from "../../store/film";
+import "./EditFilmPage.css"
 
-function CreateFilmPage() {
+function EditFilmPage() {
     const dispatch = useDispatch();
     const history = useHistory();
+    const film = useSelector(state => state.film.currentFilm);
 
     const [imageLoading, setImageLoading] = useState(false);
 
-    const [title, setTitle] = useState("")
-    const [year, setYear] = useState(1900);
+    const [title, setTitle] = useState(film.title)
+    const [year, setYear] = useState(film.year);
     const [poster, setPoster] = useState(null);
     const [still, setStill] = useState(null);
-    const [tagline, setTagline] = useState("");
-    const [synopsis, setSynopsis] = useState("");
-    const [runtime, setRuntime] = useState(0);
-    const [director, setDirector] = useState("");
-    const [studio, setStudio] = useState("");
-    const [genre, setGenre] = useState("");
-    const [language, setLanguage] = useState("");
-    const [country, setCountry] = useState("");
-    const [producer, setProducer] = useState("");
-    const [writer, setWriter] = useState("");
-    const [editor, setEditor] = useState("");
-    const [cinematographer, setCinematographer] = useState("");
+    const [tagline, setTagline] = useState(film.tagline);
+    const [synopsis, setSynopsis] = useState(film.synopsis);
+    const [runtime, setRuntime] = useState(film.runtime);
+    const [director, setDirector] = useState(film.director);
+    const [studio, setStudio] = useState(film.studio);
+    const [genre, setGenre] = useState(film.genre);
+    const [language, setLanguage] = useState(film.language);
+    const [country, setCountry] = useState(film.country);
+    const [producer, setProducer] = useState(film.producer);
+    const [writer, setWriter] = useState(film.writer);
+    const [editor, setEditor] = useState(film.editor);
+    const [cinematographer, setCinematographer] = useState(film.cinematographer);
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        debugger
 
         const formData = new FormData();
+        
+        formData.append("id", film.id);
         formData.append("title", title);
         formData.append("year", year);
         formData.append("poster", poster);
@@ -51,14 +54,14 @@ function CreateFilmPage() {
 
         setImageLoading(true);
 
-        await dispatch(thunkCreateFilm(formData));
+        await dispatch(thunkEditFilm(formData));
         setImageLoading(false);
         history.push('/');
     }
 
     return (
         <div className="create-profile-container">
-            <h1 className="create-profile-header">Add a Film</h1>
+            <h1 className="create-profile-header">Edit Film</h1>
             <form
                 className="create-profile-form"
                 encType="multipart/form-data"
@@ -230,4 +233,4 @@ function CreateFilmPage() {
     )
 }
 
-export default CreateFilmPage;
+export default EditFilmPage;

@@ -137,3 +137,47 @@
     margin-top: 20px;
     font-family: TiemposTextWeb-Regular, Georgia, serif;
 }
+
+.profile-collection-card {
+    display: flex;
+    flex-direction: column;
+    width: 950px;
+    margin-top: 10px;
+    border-bottom: 1px solid #445566;
+    padding-left: 20px;
+}
+
+.collection-title-text {
+    margin-top: 5px;
+    margin-bottom: 7px;
+    font-family: Graphik-Semibold-Web,sans-serif;
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.collection-title-text:hover {
+    color: #ddeeff;
+}
+
+.collection-title:hover {
+    color: #ddeeff;
+    text-decoration: none;
+}
+
+.collection-title:visited {
+    text-decoration: none;
+}
+
+.collection-title:link {
+    text-decoration: none;
+}
+
+.collection-title:active {
+    text-decoration: none;
+}
+
+.collection-text {
+    font-family: TiemposTextWeb-Regular,Georgia,serif;
+    margin-top: 10px;
+}

@@ -15,8 +15,6 @@ const ProfilePage = () => {
     const reviews = useSelector(state => state.review.allReviews);
     const reviewsArr = Object.values(reviews);
     const myReviews = reviewsArr.filter(review => review.profile_id === myProfile.id);
-    const films = useSelector(state => state.film.allFilms);
-    const filmsArr = Object.values(films);
     const collections = useSelector(state => state.collection.allCollections);
     const collectionsArr = Object.values(collections);
 
@@ -52,11 +50,11 @@ const ProfilePage = () => {
                     <div className="my-review-header">MY COLLECTIONS</div>
                     {collectionsArr.length > 0 ? (
                         collectionsArr.map((collection) => (
-                            <div className="collection-card">
-                                <NavLink exact to={`/collection/${collection.id}`}>
-                                    <h2>{collection.name}</h2>
-                                    <div>{collection.description}</div>
+                            <div className="profile-collection-card">
+                                <NavLink className="collection-title" exact to={`/collection/${collection.id}`}>
+                                    <h2 className="collection-title-text">{collection.name}</h2>
                                 </NavLink>
+                                    <p className="collection-text">{collection.description}</p>
                             </div>
                         ))) : (
                         <div>You haven't made any collections yet!</div>
