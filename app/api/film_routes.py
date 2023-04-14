@@ -89,7 +89,7 @@ def add_film():
 @film_routes.route('/edit', methods=['PUT'])
 @login_required
 def edit_film():
-    request_body = request.get_json()
+    request_body = request.values
     film_id = request_body['id']
 
     form = FilmForm()
@@ -103,8 +103,6 @@ def edit_film():
             return upload, 400
 
         url = upload['url']
-
-
         still = form["still"].data
         still.filename = get_unique_filename(still.filename)
         upload2 = upload_file_to_s3(still)
@@ -118,8 +116,8 @@ def edit_film():
 
         to_update_film.title = form["title"].data
         to_update_film.year = form["year"].data
-        poster=url
-        still=url2
+        to_update_film.poster=url
+        to_update_film.still=url2
         to_update_film.tagline = form["tagline"].data
         to_update_film.synopsis = form["synopsis"].data
         to_update_film.runtime = form["runtime"].data

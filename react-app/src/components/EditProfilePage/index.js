@@ -38,8 +38,6 @@ function EditProfilePage() {
         formData.append("location", location);
         formData.append("pronoun", pronoun);
 
-        console.log("AAAAA", formData.image)
-
         setImageLoading(true);
 
         await dispatch(thunkEditProfile(formData));

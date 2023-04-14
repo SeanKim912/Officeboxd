@@ -97,3 +97,42 @@ def react_root(path):
 @app.errorhandler(404)
 def not_found(e):
     return app.send_static_file('index.html')
+
+# class LoggingMiddleware:
+#     def __init__(self, app):
+#         self.app = app
+
+#     def __call__(self, environ, start_response):
+#         # Log request information
+#         print(f"Request: {environ['REQUEST_METHOD']} {environ['PATH_INFO']} {environ['SERVER_PROTOCOL']}")
+#         for header, value in environ.items():
+#             if header.startswith('HTTP_'):
+#                 print(f"{header[5:]}: {value}")
+
+#         # Log request body
+#         request_body = b''
+#         if environ.get('CONTENT_LENGTH', '0') != '0':
+#             request_body = environ['wsgi.input'].read(int(environ['CONTENT_LENGTH']))
+#         print(f"Body: {request_body.decode('utf-8')}")
+
+#         # Call the next middleware/application in the stack
+#         response = self.app(environ, start_response)
+
+#         # Log response information
+#         print(f"Response: {response.status} {response.status_code}")
+#         for header, value in response.headers.items():
+#             print(f"{header}: {value}")
+
+#         # Log response body
+#         response_body = b''
+#         if response.response:
+#             response_body = response.response
+#         elif response.response_type == 'application/json':
+#             response_body = response.get_json()
+#         print(f"Body: {response_body.decode('utf-8')}")
+
+#         print()
+
+#         return response
+
+# app.wsgi_app = LoggingMiddleware(app.wsgi_app)

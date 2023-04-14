@@ -70,6 +70,7 @@ export const thunkCreateFilm = (formData) => async (dispatch) => {
 }
 
 export const thunkEditFilm = (formData) => async (dispatch) => {
+    debugger
     const response = await fetch('/api/film/edit', {
         method: 'PUT',
         body: formData

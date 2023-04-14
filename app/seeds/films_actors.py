@@ -4,8 +4,6 @@ def seed_films_actors():
     actors = Actor.query.all()
     films = Film.query.all()
 
-    print("WHAT ARE THESE", actors, films)
-
     actor1 = actors[0]
     actor2 = actors[1]
     actor3 = actors[2]

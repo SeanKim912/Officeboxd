@@ -33,7 +33,7 @@ function EditFilmPage() {
         e.preventDefault();
 
         const formData = new FormData();
-        
+
         formData.append("id", film.id);
         formData.append("title", title);
         formData.append("year", year);
@@ -53,10 +53,11 @@ function EditFilmPage() {
         formData.append("cinematographer", cinematographer);
 
         setImageLoading(true);
+        debugger
 
         await dispatch(thunkEditFilm(formData));
         setImageLoading(false);
-        history.push('/');
+        history.push(`/film/${film.id}`);
     }
 
     return (

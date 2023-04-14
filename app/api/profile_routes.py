@@ -65,10 +65,9 @@ def edit_profile():
     form = ProfileForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-
         image = form["image"].data
         image.filename = get_unique_filename(image.filename)
-        upload = upload_file_to_s3
+        upload = upload_file_to_s3(image)
 
         if "url" not in upload:
             return upload, 400
@@ -77,8 +76,7 @@ def edit_profile():
 
         to_update_profile = Profile.query.filter(Profile.user_id == current_user.id).first()
 
-        to_update_profile.user_id = current_user.id
-        to_update_profile.avatar_url = url
+        to_update_profile.avatar_url=url
         to_update_profile.bio = form["bio"].data
         to_update_profile.location = form["location"].data
         to_update_profile.pronoun = form["pronoun"].data
