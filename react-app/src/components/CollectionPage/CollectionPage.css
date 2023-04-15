@@ -1,0 +1,24 @@
+.collection-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 950px;
+    height: 100vh;
+    margin: auto;
+}
+
+.collection-review-text {
+    font-family: TiemposTextWeb-Regular, Georgia, serif;
+    color: rgb(153, 170, 187);
+}
+
+.collection-button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 250px;
+    margin: 30px;
+}
+
+

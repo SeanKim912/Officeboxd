@@ -1,18 +1,27 @@
 .filmPageContainer {
+    background-color: #14181c;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     color: #9ab;
     font-family: Graphik-Light-Web, sans-serif;
-    min-height: 100vh;
-    padding-bottom: 50px;
+    height: 200vh;
+    width: 100%;
+}
+
+.content-container {
+    z-index: 2;
+    position: absolute;
+    top: 550px;
 }
 
 .still {
-    width: 1200px;
-    height: 675px;
-    box-shadow: 0px 0px 200px black;
+    width: 1280px;
+    height: 600px;
+    z-index: 0;
+    background-size: 100%;
 }
 
 .main-row {
@@ -243,4 +252,23 @@
 .other-reviews-card-text {
     margin-top: 15px;
     font-family: TiemposHeadlineWeb-Bold, Georgia,serif;
+}
+
+.film-link-button {
+    background-color: #445566;
+    border: none;
+    border-radius: 5px;
+    color: #c8d4e0;
+    cursor: pointer;
+    font-family: Graphik-Semibold-Web, sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    height: 43px;
+    width: 230px;
+    margin-bottom: 10px;
+}
+
+.film-link-button:hover {
+    color: white;
+    background-color: #667788;
 }

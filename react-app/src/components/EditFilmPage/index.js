@@ -69,47 +69,42 @@ function EditFilmPage() {
                 onSubmit={handleSubmit}
             >
                 <div className="entry-field">
-                    <label>
-                        Title:
+                    <label className="film-form-field">Title</label>
                         <input
+                            className="film-input-field"
                             type='text'
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                             maxLength={50}
                             required
                         />
-                    </label>
-                    <label className='profile-form-field'>
-                        Year:
+                    <label className='film-form-field'>Year</label>
                         <input
+                            className="film-input-field"
                             type='number'
                             value={year}
                             onChange={(e) => setYear(e.target.value)}
                             required
                         />
-                    </label>
-                    <label className='profile-form-field'>
-                        Poster:
+                    <label className='film-form-field'>Poster</label>
                         <input
+                            className="film-input-field"
                             type='file'
                             accept="image/*"
                             onChange={(e) => setPoster(e.target.files[0])}
                             required
                         />
-                    </label>
-                    <label className='profile-form-field'>
-                        Still:
+                    <label className='film-form-field'>Still</label>
                         <input
+                            className="film-input-field"
                             type='file'
                             accept="image/*"
                             onChange={(e) => setStill(e.target.files[0])}
                             required
                         />
-                    </label>
-                    <label className='profile-form-field'>
-                        Tagline:
+                    <label className='film-form-field'>Tagline</label>
                         <textarea
-                            className="review-textarea"
+                            className="film-textarea"
                             value={tagline}
                             rows="6"
                             columns="25"
@@ -118,11 +113,9 @@ function EditFilmPage() {
                             maxLength={140}
                             required
                         />
-                    </label>
-                    <label className='profile-form-field'>
-                        Synopsis:
+                    <label className='film-form-field'>Synopsis</label>
                         <textarea
-                            className="review-textarea"
+                            className="film-textarea"
                             value={synopsis}
                             rows="10"
                             columns="25"
@@ -131,101 +124,90 @@ function EditFilmPage() {
                             maxLength={500}
                             required
                         />
-                    </label>
-                    <label className='profile-form-field'>
-                        Runtime:
+                    <label className='film-form-field'>Runtime</label>
                         <input
+                            className="film-input-field"
                             type='number'
                             value={runtime}
                             onChange={(e) => setRuntime(e.target.value)}
                             required
                         />
-                    </label>
-                    <label className='profile-form-field'>
-                        Director:
+                    <label className='film-form-field'>Director</label>
                         <input
+                            className="film-input-field"
                             type='text'
                             value={director}
                             onChange={(e) => setDirector(e.target.value)}
                             required
                         />
-                    </label>
-                    <label className='profile-form-field'>
-                        Studio:
+                    <label className='film-form-field'>Studio</label>
                         <input
+                            className="film-input-field"
                             type='text'
                             value={studio}
                             onChange={(e) => setStudio(e.target.value)}
                             required
                         />
-                    </label>
-                    <label className='profile-form-field'>
-                        Genre:
+                    <label className='film-form-field'>Genre</label>
                         <input
+                            className="film-input-field"
                             type='text'
                             value={genre}
                             onChange={(e) => setGenre(e.target.value)}
                             required
                         />
-                    </label>
-                    <label className='profile-form-field'>
-                        Language:
+                    <label className='film-form-field'>Language</label>
                         <input
+                            className="film-input-field"
                             type='text'
                             value={language}
                             onChange={(e) => setLanguage(e.target.value)}
                             required
                         />
-                    </label>
-                    <label className='profile-form-field'>
-                        Country:
+                    <label className='film-form-field'>Country</label>
                         <input
+                            className="film-input-field"
                             type='text'
                             value={country}
                             onChange={(e) => setCountry(e.target.value)}
                             required
                         />
-                    </label>
-                    <label className='profile-form-field'>
-                        Producer:
+                    <label className='film-form-field'>Producer</label>
                         <input
+                            className="film-input-field"
                             type='text'
                             value={producer}
                             onChange={(e) => setProducer(e.target.value)}
                             required
                         />
-                    </label>
-                    <label className='profile-form-field'>
-                        Writer:
+                    <label className='film-form-field'>Writer</label>
                         <input
+                            className="film-input-field"
                             type='text'
                             value={writer}
                             onChange={(e) => setWriter(e.target.value)}
                             required
                         />
-                    </label>
-                    <label className='profile-form-field'>
-                        Editor:
+                    <label className='film-form-field'>Editor</label>
                         <input
+                            className="film-input-field"
                             type='text'
                             value={editor}
                             onChange={(e) => setEditor(e.target.value)}
                             required
                         />
-                    </label>
-                    <label className='profile-form-field'>
-                        Cinematographer:
+                    <label className='film-form-field'>Cinematographer</label>
                         <input
+                            className="film-input-field"
                             type='text'
                             value={cinematographer}
                             onChange={(e) => setCinematographer(e.target.value)}
                             required
                         />
-                    </label>
                 </div>
                 <div className="profile-button-container">
                     <button className="edit-profile-button" type="submit">
-                        Submit Film
+                        SUBMIT EDIT
                     </button>
                 </div>
                 {(imageLoading) && <p>Loading...</p>}

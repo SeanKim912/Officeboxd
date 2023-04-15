@@ -50,45 +50,52 @@ const EditCollectionPage = () => {
                 <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>
-                <div className="entry-field">
-                    <label className="profile-form-field">
-                        Name:
-                        <input
-                            type='text'
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            required
-                            maxLength={100}
-                        />
-                    </label>
-                    <label className="profile-form-field">
-                        Description:
-                        <textarea
-                            className="review-textarea"
-                            value={description}
-                            placeholder="Add a description..."
-                            rows="10"
-                            cols="25"
-                            maxLength={10000}
-                            onChange={(e) => setDescription(e.target.value)}
-                            required
-                        />
-                    </label>
-                    <label>
-                        Add films:
-                        <div className="card-container">
-                            <ul className="card-list">
-                                {preSubmitFilm?.map((id) => {
-                                    return (
-                                        <img className="film-card"
-                                            src={allFilms[id]?.poster}
-                                            onClick={(e) => {
-                                                setPreSubmitFilm(preSubmitFilm.toSpliced(preSubmitFilm.indexOf(id), 1))
-                                            }}
-                                        />
-                                    )
-                                })}
-                            </ul>
+                <div className="collection-entry-field">
+                        <div className="collection-entry-row">
+                            <label className="profile-form-field">Name</label>
+                            <input
+                                className="profile-input-field"
+                                type='text'
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                required
+                                maxLength={100}
+                            />
+                        </div>
+                        <div className="collection-entry-row">
+                            <label className="profile-form-field">Description</label>
+                            <textarea
+                                className="profile-input-field"
+                                value={description}
+                                placeholder="Add a description..."
+                                rows="10"
+                                cols="25"
+                                maxLength={10000}
+                                onChange={(e) => setDescription(e.target.value)}
+                                required
+                            />
+                        </div>
+                    </div>
+                    <div className="add-films-container">
+                        <label className="profile-form-field">ADD FILMS:</label>
+                        {!preSubmitFilm.length && (
+                            <div className="empty-list-text">Click on films below to add them to this list!</div>
+                        )}
+                        <div className="presubmit-container">
+                            <div className="card-container">
+                                <ul className="card-list">
+                                    {preSubmitFilm?.map((id) => {
+                                        return (
+                                            <img className="film-card"
+                                                src={allFilms[id]?.poster}
+                                                onClick={(e) => {
+                                                    setPreSubmitFilm(preSubmitFilm.toSpliced(preSubmitFilm.indexOf(id), 1))
+                                                }}
+                                            />
+                                        )
+                                    })}
+                                </ul>
+                            </div>
                         </div>
                         <div className="card-container">
                             <ul className="card-list">
@@ -108,11 +115,10 @@ const EditCollectionPage = () => {
                                 })}
                             </ul>
                         </div>
-                    </label>
-                </div>
+                    </div>
                 <div className="profile-button-container">
                     <button className="edit-profile-button" type="submit">
-                        Edit Collection
+                        EDIT COLLECTION
                     </button>
                 </div>
             </form>

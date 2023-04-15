@@ -51,38 +51,43 @@ function CreateProfilePage() {
                 onSubmit={handleSubmit}
             >
                 <div className="entry-field">
-                    <label className='profile-form-field'>
-                        Avatar:
+                    <div className="profile-input-row">
+                        <label className='profile-form-field'>Avatar</label>
                         <input
+                            className="profile-input-field"
                             type='file'
                             accept="image/*"
                             onChange={(e) => setImage(e.target.files[0])}
                             required
                         />
-                    </label>
-                    <label className='profile-form-field'>
-                        Bio:
+                    </div>
+                    <div className="profile-input-row">
+                        <label className='profile-form-field'>Bio</label>
                         <textarea
+                            className="profile-input-field"
                             value={bio}
                             onChange={(e) => setBio(e.target.value)}
+                            placeholder="Introduce yourself!"
                             required
                             maxLength={500}
                             rows="5"
                             cols="25"
                         />
-                    </label>
-                    <label className='profile-form-field'>
-                        Location:
+                    </div>
+                    <div className="profile-input-row">
+                        <label className='profile-form-field'>Location</label>
                         <input
+                            className="profile-input-field"
                             type='text'
                             value={location}
                             onChange={(e) => setLocation(e.target.value)}
                             required
                         />
-                    </label>
-                    <label className='profile-form-field'>
-                        Pronoun:
+                    </div>
+                    <div className="profile-input-row">
+                        <label className='profile-form-field'>Pronoun</label>
                         <select
+                            className="profile-input-field"
                             type='text'
                             name='pronoun'
                             value={pronoun}
@@ -93,11 +98,11 @@ function CreateProfilePage() {
                                 <option key={option}>{option}</option>
                             ))}
                         </select>
-                    </label>
+                    </div>
                 </div>
                 <div className="profile-button-container">
                     <button className="edit-profile-button" type="submit">
-                        Create Profile
+                        CREATE PROFILE
                     </button>
                 </div>
                 {(imageLoading) && <p>Loading...</p>}

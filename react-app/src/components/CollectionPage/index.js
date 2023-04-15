@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory, NavLink } from 'react-router-dom';
 import { thunkGetCollection, thunkDeleteCollection } from '../../store/collection';
 import { thunkGetAllFilms } from '../../store/film';
+import './CollectionPage.css'
 
 const CollectionPage = () => {
     const dispatch = useDispatch();
@@ -33,19 +34,27 @@ const CollectionPage = () => {
     }
 
     return (
-        <div>
-            <h1>{collection.name}</h1>
-            <h3>{collection.description}</h3>
-            <div>
-                <NavLink exact to={'/collection/edit'}>
-                    <button>Edit Collection</button>
-                </NavLink>
-                <button onClick={handleDelete}>Delete Collection</button>
+        <>
+            <div className='collection-container'>
+                <h1 className='main-film-title'>{collection.name}</h1>
+                <div className='collection-review-text'>{collection.description}</div>
+                <div className='collection-button-container'>
+                    <NavLink exact to={'/collection/edit'}>
+                        <button className='edit-profile-link-button'>EDIT</button>
+                    </NavLink>
+                    <button className='edit-profile-link-button' onClick={handleDelete}>DELETE</button>
+                </div>
+                <div className='card-container'>
+                    <ul className='card-list'>
+                        {listArr?.map((id) => (
+                            <NavLink exact to={`/film/${id}`}>
+                                <img className='film-card' src={films[id].poster} />
+                            </NavLink>
+                        ))}
+                    </ul>
+                </div>
             </div>
-            {listArr?.map((id) => (
-                <img src={films[id].poster} />
-            ))}
-        </div>
+        </>
     )
 }
 

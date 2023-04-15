@@ -1,0 +1,19 @@
+.film-form-field {
+    margin-bottom: 5px;
+    width: auto;
+}
+
+.film-input-field {
+    width: 255px;
+    max-width: 255px;
+    background-color: #ccddee;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+
+.film-textarea {
+    background-color: #ccddee;
+    border-radius: 5px;
+    width: 255px;
+    margin-bottom: 10px;
+}

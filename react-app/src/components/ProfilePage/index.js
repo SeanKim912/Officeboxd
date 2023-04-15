@@ -57,10 +57,10 @@ const ProfilePage = () => {
                                     <p className="collection-text">{collection.description}</p>
                             </div>
                         ))) : (
-                        <div>You haven't made any collections yet!</div>
+                        <div className="default-text">You haven't made any collections yet!</div>
                     )}
                     <NavLink exact to={'/collection/create'}>
-                        <button>Add a collection...</button>
+                        <button className="collection-button">ADD A COLLECTION</button>
                     </NavLink>
                 </div>
                 <div className="my-review-container">
@@ -90,7 +90,7 @@ const ProfilePage = () => {
                                 </div>
                             </div>
                         ))) : (
-                        <div>You haven't reviewed any films yet!</div>
+                        <div className="default-text">You haven't reviewed any films yet!</div>
                     )}
                 </div>
             </div>
