@@ -18,6 +18,7 @@ Links to Project Wiki:
 - Python
 - Flask/SQLAlchemy
 - HTML/CSS
+- S3/AWS
 
 # Features Directions:
 
