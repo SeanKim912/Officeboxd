@@ -23,6 +23,8 @@ Links to Project Wiki:
 # Features Directions:
 
 You will be able to test the features without going through the entire signup process by clicking the 'Demo User' button in the login modal.
+Films can currently be added by any user, but can only be edited or deleted by the administrator account. For demonstration purposes,
+you can log in as 'admin@aa.io' with 'password'.
 
 ![OfficeboxdSplashPage](https://user-images.githubusercontent.com/106803067/223077122-bede8580-a3b7-45f8-837b-14e0b1b27837.png)
 
