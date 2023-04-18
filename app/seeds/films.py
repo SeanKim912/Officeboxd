@@ -205,7 +205,7 @@ def seed_films():
         poster="https://imgs.search.brave.com/btdJLXQH6q3m2ZAOKYuoeoKXwcMP5O59x8WXkYi_oV4/rs:fit:868:1160:1/g:ce/aHR0cHM6Ly8yLmJw/LmJsb2dzcG90LmNv/bS8tZzZTVEZ4REgt/bFkvVHN2aWRJM0lJ/M0kvQUFBQUFBQUFN/aTAvaHJ3cUdJT1Yx/LXcvczE2MDAvRmFy/Z28lMkJwb3N0ZXIu/anBn",
         still="https://cdn.mos.cms.futurecdn.net/774cd8f235d7d29d5a4e72a550a850a7-970-80.gif",
         tagline="A LOT CAN HAPPEN IN THE MIDDLE OF NOWHERE.",
-        synopsis="Jerry, a small-town Minnesota car salesman is bursting at the seams with debt… but he’s got a plan. He’s going to hire two thugs to kidnap his wife in a scheme to collect a hefty ransom from his wealthy father-in-law. It’s going to be a snap and nobody’s going to get hurt… until people start dying. Enter Police Chief Marge, a coffee-drinking, parka-wearing - and extremely pregnant - investigator who’ll stop at nothing to get her man. And if you think her small-time investigative skills will give the crooks a run for their ransom… you betcha!",
+        synopsis="Jerry, a small-town Minnesota car salesman is bursting at the seams with debt… but he’s got a plan. He’s going to hire two thugs to kidnap his wife in a scheme to collect a hefty ransom from his wealthy father-in-law. It’s going to be a snap and nobody’s going to get hurt… until people start dying. Enter Police Chief Marge, a coffee-drinking, parka-wearing - and extremely pregnant - investigator who’ll stop at nothing to get her man.",
         runtime=98,
         director="Joel Coen",
         studio="PolyGram Filmed Entertainment",
