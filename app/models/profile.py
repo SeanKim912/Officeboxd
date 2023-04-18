@@ -16,6 +16,7 @@ class Profile (db.Model):
 
     user = db.relationship('User', back_populates='profile')
     profile_reviews = db.relationship('Review', back_populates='profile', cascade="all, delete")
+    profile_collections = db.relationship('Collection', back_populates='profile')
 
     def to_dict(self):
         return{

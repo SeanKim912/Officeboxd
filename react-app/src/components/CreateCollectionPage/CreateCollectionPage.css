@@ -1,0 +1,44 @@
+.create-collection-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 950px;
+    font-family: Graphik-Light-Web, sans-serif;
+    color: #9ab;
+    background-size: 100%;
+    margin: auto;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.collection-entry-row {
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    vertical-align: baseline;
+    margin-bottom: 10px;
+}
+
+.collection-entry-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.empty-list-text {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.presubmit-container {
+    border-bottom: 1px solid #445566;
+}
+
+.add-films-container {
+    margin-top: 20px;
+}

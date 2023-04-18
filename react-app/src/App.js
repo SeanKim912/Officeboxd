@@ -10,6 +10,12 @@ import ProfilePage from "./components/ProfilePage";
 import CreateProfilePage from "./components/CreateProfilePage";
 import EditProfilePage from "./components/EditProfilePage";
 import FilmPage from "./components/FilmPage";
+import CollectionPage from "./components/CollectionPage";
+import CreateCollectionPage from "./components/CreateCollectionPage";
+import EditCollectionPage from "./components/EditCollectionPage";
+import CreateFilmPage from "./components/CreateFilmPage";
+import EditFilmPage from "./components/EditFilmPage";
+import NotFoundPage from "./components/NotFoundPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,11 +29,25 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path="/film/create">
+            <CreateFilmPage />
+          </Route>
+          <Route exact path="/film/edit">
+            <EditFilmPage />
+          </Route>
           <Route exact path="/film/:filmId">
             <FilmPage />
           </Route>
-          <
-            Route exact path="/review/:reviewId">
+          <Route exact path="/review/:reviewId">
+          </Route>
+          <Route exact path="/collection/create">
+            <CreateCollectionPage />
+          </Route>
+          <Route exact path="/collection/edit">
+            <EditCollectionPage />
+          </Route>
+          <Route exact path="/collection/:collectionId">
+            <CollectionPage />
           </Route>
           <Route path="/login" >
             <LoginFormPage />
@@ -47,7 +67,9 @@ function App() {
           <Route exact path='/'>
             <SplashPage />
           </Route>
-          {/* 404 route here */}
+          <Route path="*">
+            <NotFoundPage />
+          </Route>
         </Switch>
       )}
     </>

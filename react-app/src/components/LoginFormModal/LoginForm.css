@@ -24,7 +24,16 @@
 
 .login-form-field {
     margin-bottom: 10px;
-    width: auto;
+    width: 260px;
+}
+
+.entry-row {
+    width: 260px;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    vertical-align: baseline;
 }
 
 .login-button {
@@ -37,4 +46,10 @@
     font-size: 1rem;
     font-weight: 400;
     margin-bottom: 10px;
+}
+
+.input-field {
+    margin-left: 10px;
+    width: auto;
+    background-color: #ccddee;
 }

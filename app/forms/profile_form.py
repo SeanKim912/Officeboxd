@@ -1,8 +1,10 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, SelectField
+from flask_wtf.file import FileField, FileAllowed, FileRequired
+from wtforms import StringField, SubmitField
+from app.s3_helpers import ALLOWED_EXTENSIONS
 
 class ProfileForm(FlaskForm):
-    avatar_url = StringField('Profile Picture')
+    image = FileField("Image File", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
     bio = StringField('Bio')
     location = StringField('Location')
     pronoun = StringField('Pronoun')

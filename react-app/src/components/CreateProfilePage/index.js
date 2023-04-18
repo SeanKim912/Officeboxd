@@ -1,6 +1,6 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { thunkCreateProfile } from "../../store/profile";
 import './CreateProfilePage.css'
 
@@ -8,7 +8,8 @@ function CreateProfilePage() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const [avatarUrl, setAvatarUrl] = useState("");
+    const [image, setImage] = useState(null);
+    const [imageLoading, setImageLoading] = useState(false);
     const [bio, setBio] = useState("");
     const [location, setLocation] = useState("");
     const [pronoun, setPronoun] = useState("");
@@ -28,56 +29,65 @@ function CreateProfilePage() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const formData = new FormData();
+        formData.append("image", image);
+        formData.append("bio", bio);
+        formData.append("location", location);
+        formData.append("pronoun", pronoun);
 
-        let avatar_url = avatarUrl
+        setImageLoading(true);
 
-        const data = {
-            avatar_url,
-            bio,
-            location,
-            pronoun
-        }
-
-        await dispatch(thunkCreateProfile(data));
+        await dispatch(thunkCreateProfile(formData));
+        setImageLoading(false);
         history.push('/')
     }
 
     return (
         <div className="create-profile-container">
             <h1 className="create-profile-header">Create Profile</h1>
-            <form className="create-profile-form" onSubmit={handleSubmit}>
+            <form
+                className="create-profile-form"
+                encType="multipart/form-data"
+                onSubmit={handleSubmit}
+            >
                 <div className="entry-field">
-                    <label className='profile-form-field'>
-                        Avatar:
+                    <div className="profile-input-row">
+                        <label className='profile-form-field'>Avatar</label>
                         <input
-                            type='url'
-                            value={avatarUrl}
-                            onChange={(e) => setAvatarUrl(e.target.value)}
+                            className="profile-input-field"
+                            type='file'
+                            accept="image/*"
+                            onChange={(e) => setImage(e.target.files[0])}
                             required
                         />
-                    </label>
-                    <label className='profile-form-field'>
-                        Bio:
-                        <input
-                            type='text'
+                    </div>
+                    <div className="profile-input-row">
+                        <label className='profile-form-field'>Bio</label>
+                        <textarea
+                            className="profile-input-field"
                             value={bio}
                             onChange={(e) => setBio(e.target.value)}
+                            placeholder="Introduce yourself!"
                             required
                             maxLength={500}
+                            rows="5"
+                            cols="25"
                         />
-                    </label>
-                    <label className='profile-form-field'>
-                        Location:
+                    </div>
+                    <div className="profile-input-row">
+                        <label className='profile-form-field'>Location</label>
                         <input
+                            className="profile-input-field"
                             type='text'
                             value={location}
                             onChange={(e) => setLocation(e.target.value)}
                             required
                         />
-                    </label>
-                    <label className='profile-form-field'>
-                        Pronoun:
+                    </div>
+                    <div className="profile-input-row">
+                        <label className='profile-form-field'>Pronoun</label>
                         <select
+                            className="profile-input-field"
                             type='text'
                             name='pronoun'
                             value={pronoun}
@@ -88,13 +98,14 @@ function CreateProfilePage() {
                                 <option key={option}>{option}</option>
                             ))}
                         </select>
-                    </label>
+                    </div>
                 </div>
                 <div className="profile-button-container">
                     <button className="edit-profile-button" type="submit">
-                        Create Profile
+                        CREATE PROFILE
                     </button>
                 </div>
+                {(imageLoading) && <p>Loading...</p>}
             </form>
         </div>
     )

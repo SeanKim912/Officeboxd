@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, session, request
 from flask_login import login_required, current_user, logout_user
 from app.models import Profile, User, db
 from app.forms import ProfileForm
+from app.s3_helpers import (upload_file_to_s3, get_unique_filename)
 
 profile_routes = Blueprint('profile', __name__)
 
@@ -34,12 +35,22 @@ def create_profile():
     form = ProfileForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+
+        image = form["image"].data
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+
+        if "url" not in upload:
+            return upload, 400
+
+        url = upload['url']
+
         user_profile = Profile(
             user_id=current_user.id,
-            avatar_url=form.data['avatar_url'],
-            bio=form.data['bio'],
-            location=form.data['location'],
-            pronoun=form.data['pronoun']
+            avatar_url=url,
+            bio=form["bio"].data,
+            location=form['location'].data,
+            pronoun=form['pronoun'].data
         )
 
         db.session.add(user_profile)
@@ -54,14 +65,21 @@ def edit_profile():
     form = ProfileForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        to_update_profile = Profile.query.filter(
-            Profile.user_id == current_user.id).first()
+        image = form["image"].data
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
 
-        to_update_profile.user_id = current_user.id
-        to_update_profile.avatar_url = form.data['avatar_url']
-        to_update_profile.bio = form.data['bio']
-        to_update_profile.location = form.data['location']
-        to_update_profile.pronoun = form.data['pronoun']
+        if "url" not in upload:
+            return upload, 400
+
+        url = upload["url"]
+
+        to_update_profile = Profile.query.filter(Profile.user_id == current_user.id).first()
+
+        to_update_profile.avatar_url=url
+        to_update_profile.bio = form["bio"].data
+        to_update_profile.location = form["location"].data
+        to_update_profile.pronoun = form["pronoun"].data
 
         db.session.commit()
 

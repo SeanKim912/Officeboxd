@@ -22,7 +22,7 @@
 }
 
 .profile-form-field {
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     width: auto;
 }
 
@@ -35,4 +35,21 @@
     font-size: 1rem;
     font-weight: 400;
     margin-bottom: 5px;
+}
+
+.profile-input-row {
+    width: 330px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: bottom;
+    margin-bottom: 10px;
+}
+
+.profile-input-field {
+    width: 255px;
+    max-width: 255px;
+    background-color: #ccddee;
+    border-radius: 3px;
 }

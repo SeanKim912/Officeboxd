@@ -11,7 +11,8 @@ function EditProfilePage() {
     const history = useHistory();
     const currentInfo = useSelector(state => state.profile.currentUserProfile);
 
-    const [avatarUrl, setAvatarUrl] = useState(currentInfo.avatar_url);
+    const [image, setImage] = useState(currentInfo.avatar_url);
+    const [imageLoading, setImageLoading] = useState(false);
     const [bio, setBio] = useState(currentInfo.bio);
     const [location, setLocation] = useState(currentInfo.location);
     const [pronoun, setPronoun] = useState(currentInfo.pronoun);
@@ -31,17 +32,16 @@ function EditProfilePage() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const formData = new FormData();
+        formData.append("image", image);
+        formData.append("bio", bio);
+        formData.append("location", location);
+        formData.append("pronoun", pronoun);
 
-        let avatar_url = avatarUrl
+        setImageLoading(true);
 
-        const data = {
-            avatar_url,
-            bio,
-            location,
-            pronoun
-        }
-
-        await dispatch(thunkEditProfile(data));
+        await dispatch(thunkEditProfile(formData));
+        setImageLoading(false);
         history.push('/my-profile')
     }
 
@@ -56,40 +56,49 @@ function EditProfilePage() {
     return (
         <div className="edit-profile-container">
             <h1 className="edit-profile-header">Edit Profile</h1>
-            <form className="edit-profile-form" onSubmit={handleSubmit}>
+            <form
+                className="edit-profile-form"
+                encType="multipart/form-data"
+                onSubmit={handleSubmit}
+            >
                 <div className="entry-field">
-                    <label className='edit-profile-field'>
-                        Avatar:
+                    <div className="profile-input-row">
+                        <label className='profile-form-field'>Avatar</label>
                         <input
-                            type='url'
-                            value={avatarUrl}
-                            onChange={(e) => setAvatarUrl(e.target.value)}
+                            className="profile-input-field"
+                            type='file'
+                            accept="image/*"
+                            onChange={(e) => setImage(e.target.files[0])}
                             required
                         />
-                    </label>
-                    <label className='edit-profile-field'>
-                        Bio:
+                    </div>
+                    <div className="profile-input-row">
+                        <label className='profile-form-field'>Bio</label>
                         <textarea
+                            className="profile-input-field"
                             value={bio}
                             onChange={(e) => setBio(e.target.value)}
+                            placeholder="Introduce yourself!"
                             required
                             maxLength={500}
                             rows="5"
                             cols="25"
                         />
-                    </label>
-                    <label className='edit-profile-field'>
-                        Location:
+                    </div>
+                    <div className="profile-input-row">
+                        <label className='profile-form-field'>Location</label>
                         <input
+                            className="profile-input-field"
                             type='text'
                             value={location}
                             onChange={(e) => setLocation(e.target.value)}
                             required
                         />
-                    </label>
-                    <label className='edit-profile-field'>
-                        Pronoun:
+                    </div>
+                    <div className="profile-input-row">
+                        <label className='profile-form-field'>Pronoun</label>
                         <select
+                            className="profile-input-field"
                             type='text'
                             name='pronoun'
                             value={pronoun}
@@ -100,7 +109,7 @@ function EditProfilePage() {
                                 <option key={option}>{option}</option>
                             ))}
                         </select>
-                    </label>
+                    </div>
                 </div>
                 <div className="profile-button-container">
                     <button className="edit-profile-button" type="submit">
@@ -110,6 +119,7 @@ function EditProfilePage() {
                         DELETE PROFILE
                     </button>
                 </div>
+                {(imageLoading) && <p>Loading...</p>}
             </form>
         </div>
     )

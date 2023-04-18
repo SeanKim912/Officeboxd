@@ -33,6 +33,13 @@ function Navigation({ isLoaded }) {
 				{isLoaded && (
 					<div className='nav-right'>
 						<li className='profile-link'>
+							<NavLink className='link-text' exact to="/film/create">
+								{sessionUser && (
+									<div>ADD FILM</div>
+								)}
+							</NavLink>
+						</li>
+						<li className='profile-link'>
 							<NavLink className='link-text' exact to="/my-profile">
 								{sessionUser && (
 									<div>PROFILE</div>

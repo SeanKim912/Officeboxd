@@ -38,3 +38,16 @@
     font-size: 1rem;
     font-weight: 400;
 }
+
+#modal {
+    z-index: 5;
+}
+
+.entry-row {
+    width: 260px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    vertical-align: baseline;
+}
