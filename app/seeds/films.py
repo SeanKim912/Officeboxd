@@ -202,7 +202,7 @@ def seed_films():
     fargo = Film(
         title="Fargo",
         year=1996,
-        poster="https://imgs.search.brave.com/jqjoVBXOa7mqQhZiV67mfir_CB4r0Q1qnEyTJXAP0nw/rs:fit:1000:1200:1/g:ce/aHR0cHM6Ly9mYW5h/cnQudHYvZmFuYXJ0/L21vdmllcy8yNzUv/bW92aWVwb3N0ZXIv/ZmFyZ28tNTMzZjgz/YWY2M2U3Yi5qcGc",
+        poster="https://imgs.search.brave.com/btdJLXQH6q3m2ZAOKYuoeoKXwcMP5O59x8WXkYi_oV4/rs:fit:868:1160:1/g:ce/aHR0cHM6Ly8yLmJw/LmJsb2dzcG90LmNv/bS8tZzZTVEZ4REgt/bFkvVHN2aWRJM0lJ/M0kvQUFBQUFBQUFN/aTAvaHJ3cUdJT1Yx/LXcvczE2MDAvRmFy/Z28lMkJwb3N0ZXIu/anBn",
         still="https://cdn.mos.cms.futurecdn.net/774cd8f235d7d29d5a4e72a550a850a7-970-80.gif",
         tagline="A LOT CAN HAPPEN IN THE MIDDLE OF NOWHERE.",
         synopsis="Jerry, a small-town Minnesota car salesman is bursting at the seams with debt… but he’s got a plan. He’s going to hire two thugs to kidnap his wife in a scheme to collect a hefty ransom from his wealthy father-in-law. It’s going to be a snap and nobody’s going to get hurt… until people start dying. Enter Police Chief Marge, a coffee-drinking, parka-wearing - and extremely pregnant - investigator who’ll stop at nothing to get her man. And if you think her small-time investigative skills will give the crooks a run for their ransom… you betcha!",
@@ -217,24 +217,6 @@ def seed_films():
         editor="Joel Coen",
         cinematographer="Roger Deakins"
     )
-    fox = Film(
-        title="Fantastic Mr. Fox",
-        year=2009,
-        poster="https://imgs.search.brave.com/uteSYLLhMlijzFNIPE6JA3kNcj_E---QYd4wGemJQb0/rs:fit:1079:1200:1/g:ce/aHR0cDovLzQuYnAu/YmxvZ3Nwb3QuY29t/L19xX0lSOU85eUJm/OC9TdjRIY0VhdmVK/SS9BQUFBQUFBQUFj/WS9Ca0trZjZkVjdy/dy9zMTYwMC9mYW50/YXN0aWMtbXItZm94/LXBvc3Rlci5qcGc",
-        still="https://cdn.mos.cms.futurecdn.net/8a95917a4fccd9ba8f54ac700b83d4f4-970-80.gif",
-        tagline="DIG THE LIFE FANTASTIC!",
-        synopsis="The Fantastic Mr. Fox bored with his current life, plans a heist against the three local farmers. The farmers, tired of sharing their chickens with the sly fox, seek revenge against him and his family.",
-        runtime=87,
-        director="Wes Anderson",
-        studio="Regency Enterprises",
-        genre="Animation",
-        language="English",
-        country="United States",
-        producer="Scott Rudin",
-        writer="Roald Dahl",
-        editor="Stephen Perkins",
-        cinematographer="Tristan Oliver"
-    )
 
     db.session.add(lotr)
     db.session.add(odyssey)
@@ -248,7 +230,6 @@ def seed_films():
     db.session.add(west)
     db.session.add(psycho)
     db.session.add(fargo)
-    db.session.add(fox)
 
     db.session.commit()
 

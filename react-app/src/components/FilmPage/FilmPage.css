@@ -1,5 +1,5 @@
 .filmPageContainer {
-    background-color: #14181c;
+    background: linear-gradient(#14181c 70%, #21282f);
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -7,7 +7,7 @@
     justify-content: space-between;
     color: #9ab;
     font-family: Graphik-Light-Web, sans-serif;
-    height: 100vh;
+    height: 125vh;
     width: 100%;
 }
 

@@ -1,7 +1,7 @@
 from app.models import db, Actor, environment, SCHEMA
 
 def seed_actors():
-    wood = Actor(
+    elijah = Actor(
         name="Elijah Wood",
         bio=""
     )
@@ -157,25 +157,13 @@ def seed_actors():
         name="Peter Stormare",
         bio=""
     )
-    clooney = Actor(
-        name="George Clooney",
-        bio=""
-    )
-    streep = Actor(
-        name="Meryl Streep",
-        bio=""
-    )
-    murray = Actor(
-        name="Bill Murray",
-        bio=""
-    )
 
     # pacino = Actor(
     #     name="",
     #     bio=""
     # )
 
-    db.session.add(wood)
+    db.session.add(elijah)
     db.session.add(viggo)
     db.session.add(keir)
     db.session.add(choi)
@@ -208,13 +196,12 @@ def seed_actors():
     db.session.add(roth)
     db.session.add(walken)
     db.session.add(buscemi)
+    db.session.add(wood)
+    db.session.add(perkins)
     db.session.add(leigh)
     db.session.add(mcdormand)
     db.session.add(macy)
     db.session.add(stormare)
-    db.session.add(clooney)
-    db.session.add(streep)
-    db.session.add(murray)
 
     db.session.commit()
 

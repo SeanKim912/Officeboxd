@@ -15,6 +15,7 @@ import CreateCollectionPage from "./components/CreateCollectionPage";
 import EditCollectionPage from "./components/EditCollectionPage";
 import CreateFilmPage from "./components/CreateFilmPage";
 import EditFilmPage from "./components/EditFilmPage";
+import NotFoundPage from "./components/NotFoundPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -66,7 +67,9 @@ function App() {
           <Route exact path='/'>
             <SplashPage />
           </Route>
-          {/* 404 route here */}
+          <Route path="*">
+            <NotFoundPage />
+          </Route>
         </Switch>
       )}
     </>

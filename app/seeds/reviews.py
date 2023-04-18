@@ -11,23 +11,23 @@ def seed_reviews():
     )
     rvw2 = Review(
         profile_id=2,
-        film_id=3,
+        film_id=4,
         watched=True,
         liked= None,
         rating=2,
-        review_text="Weird movie. I don't get it. But I do like Pabst Blue Ribbon"
+        review_text="Eva Green in this movie is soooo fiiiinnnneeeeee."
     )
     rvw3 = Review(
         profile_id=4,
-        film_id=5,
+        film_id=6,
         watched=True,
         liked=True,
         rating=8,
-        review_text="OMG saddest movie ever. I had to lie down and hug my pillow for like an hour!"
+        review_text="I spilled my drink during the scary part. My Mr. Pibb is gone now, like tears in the rain."
     )
     rvw4 = Review(
         profile_id=4,
-        film_id=4,
+        film_id=2,
         watched=True,
         liked=None,
         rating=5,

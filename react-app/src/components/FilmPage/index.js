@@ -170,7 +170,7 @@ const FilmPage = () => {
     }, [dispatch])
 
     return (
-        <>
+        <div className="background-container">
             <div className="filmPageContainer">
                 <div className="still" style={{ backgroundImage: `url(${film.still})` }}>
                     <div className="gradient-filter" />
@@ -343,7 +343,7 @@ const FilmPage = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

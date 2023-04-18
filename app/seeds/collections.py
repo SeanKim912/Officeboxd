@@ -8,16 +8,16 @@ def seed_collections():
         films="1,2,3"
     )
     marnies = Collection(
-        profile_id=2,
+        profile_id=3,
         name="Movies I Hate",
         description="Avoid these movies. Spare your eyes and ears!",
-        films="3,5"
+        films="3,5,7,9"
     )
     bobbies = Collection(
-        profile_id=2,
+        profile_id=4,
         name="Movies I Have Seen",
         description="I have seen exactly four movies in my life, and no others.",
-        films="2,3,4,5"
+        films="6,8,10,11"
     )
 
     db.session.add(demos)
