@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
-import { thunkEditProfile } from "../../store/profile";
+import { thunkEditProfile, thunkDeleteProfile, thunkNoUploadEditProfile } from "../../store/profile";
 import { logout } from "../../store/session";
-import { thunkDeleteProfile } from "../../store/profile";
 import './EditProfilePage.css'
 
 function EditProfilePage() {
     const dispatch = useDispatch();
     const history = useHistory();
     const currentInfo = useSelector(state => state.profile.currentUserProfile);
+    // const currentAvatar = new File([currentInfo.avatar_url], "newAvatar.jpeg")
 
     const [image, setImage] = useState(currentInfo.avatar_url);
     const [imageLoading, setImageLoading] = useState(false);
@@ -32,6 +32,7 @@ function EditProfilePage() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         const formData = new FormData();
         formData.append("image", image);
         formData.append("bio", bio);
@@ -40,9 +41,15 @@ function EditProfilePage() {
 
         setImageLoading(true);
 
-        await dispatch(thunkEditProfile(formData));
-        setImageLoading(false);
-        history.push('/my-profile')
+        if (typeof image === 'string') {
+            await dispatch(thunkNoUploadEditProfile(formData));
+            setImageLoading(false);
+            history.push('/my-profile');
+        } else {
+            await dispatch(thunkEditProfile(formData));
+            setImageLoading(false);
+            history.push('/my-profile');
+        }
     }
 
     async function handleDelete() {
@@ -69,7 +76,6 @@ function EditProfilePage() {
                             type='file'
                             accept="image/*"
                             onChange={(e) => setImage(e.target.files[0])}
-                            required
                         />
                     </div>
                     <div className="profile-input-row">

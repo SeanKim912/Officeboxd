@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, session, request
 from flask_login import login_required, current_user, logout_user
 from app.models import Profile, User, db
-from app.forms import ProfileForm
+from app.forms import ProfileForm, NoUploadProfileForm
 from app.s3_helpers import (upload_file_to_s3, get_unique_filename)
 
 profile_routes = Blueprint('profile', __name__)
@@ -77,6 +77,24 @@ def edit_profile():
         to_update_profile = Profile.query.filter(Profile.user_id == current_user.id).first()
 
         to_update_profile.avatar_url=url
+        to_update_profile.bio = form["bio"].data
+        to_update_profile.location = form["location"].data
+        to_update_profile.pronoun = form["pronoun"].data
+
+        db.session.commit()
+
+        return to_update_profile.to_dict()
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@profile_routes.route('/edit-no-upload', methods=['PUT'])
+def no_upload_edit_profile():
+    form = NoUploadProfileForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        to_update_profile = Profile.query.filter(Profile.user_id == current_user.id).first()
+
+        to_update_profile.avatar_url = form["image"].data
         to_update_profile.bio = form["bio"].data
         to_update_profile.location = form["location"].data
         to_update_profile.pronoun = form["pronoun"].data
