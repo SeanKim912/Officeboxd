@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import Film, db
-from app.forms import FilmForm
+from app.forms import FilmForm, UpdateFilmForm, PosterForm, StillForm
 from app.s3_helpers import (upload_file_to_s3, get_unique_filename)
 
 film_routes = Blueprint('film', __name__)
@@ -92,32 +92,32 @@ def edit_film():
     request_body = request.values
     film_id = request_body['id']
 
-    form = FilmForm()
+    form = UpdateFilmForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        poster = form["poster"].data
-        poster.filename = get_unique_filename(poster.filename)
-        upload = upload_file_to_s3(poster)
+        # poster = form["poster"].data
+        # poster.filename = get_unique_filename(poster.filename)
+        # upload = upload_file_to_s3(poster)
 
-        if "url" not in upload:
-            return upload, 400
+        # if "url" not in upload:
+        #     return upload, 400
 
-        url = upload['url']
-        still = form["still"].data
-        still.filename = get_unique_filename(still.filename)
-        upload2 = upload_file_to_s3(still)
+        # url = upload['url']
+        # still = form["still"].data
+        # still.filename = get_unique_filename(still.filename)
+        # upload2 = upload_file_to_s3(still)
 
-        if "url" not in upload2:
-            return upload2, 400
+        # if "url" not in upload2:
+        #     return upload2, 400
 
-        url2 = upload2['url']
+        # url2 = upload2['url']
 
         to_update_film = Film.query.filter(Film.id == film_id).first()
 
         to_update_film.title = form["title"].data
         to_update_film.year = form["year"].data
-        to_update_film.poster=url
-        to_update_film.still=url2
+        # to_update_film.poster=url
+        # to_update_film.still=url2
         to_update_film.tagline = form["tagline"].data
         to_update_film.synopsis = form["synopsis"].data
         to_update_film.runtime = form["runtime"].data
@@ -137,6 +137,61 @@ def edit_film():
 
     return { 'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+@film_routes.route('/edit-poster', methods=['PUT'])
+@login_required
+def edit_poster():
+    request_body = request.values
+    film_id = request_body['id']
+
+    form = PosterForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        poster = form["image"].data
+        poster.filename = get_unique_filename(poster.filename)
+        upload = upload_file_to_s3(poster)
+
+        if "url" not in upload:
+            return upload, 400
+
+        url = upload['url']
+
+        to_update_film = Film.query.filter(Film.id == film_id).first()
+
+        to_update_film.poster=url
+
+        db.session.commit()
+
+        return to_update_film.to_dict()
+
+    return { 'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@film_routes.route('/edit-still', methods=['PUT'])
+@login_required
+def edit_still():
+    request_body = request.values
+    film_id = request_body['id']
+
+    form = StillForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        still = form["image"].data
+        still.filename = get_unique_filename(still.filename)
+        upload = upload_file_to_s3(still)
+
+        if "url" not in upload:
+            return upload, 400
+
+        url = upload['url']
+
+        to_update_film = Film.query.filter(Film.id == film_id).first()
+
+        to_update_film.still=url
+
+        db.session.commit()
+
+        return to_update_film.to_dict()
+
+    return { 'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @film_routes.route('/delete', methods=['DELETE'])
 @login_required

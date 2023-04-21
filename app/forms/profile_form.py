@@ -4,7 +4,7 @@ from wtforms import StringField, SubmitField
 from app.s3_helpers import ALLOWED_EXTENSIONS
 
 class ProfileForm(FlaskForm):
-    image = FileField("Image File", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
+    image = FileField("Image File", validators=[FileAllowed(list(ALLOWED_EXTENSIONS))])
     bio = StringField('Bio')
     location = StringField('Location')
     pronoun = StringField('Pronoun')

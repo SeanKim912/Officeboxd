@@ -9,12 +9,8 @@ function EditFilmPage() {
     const history = useHistory();
     const film = useSelector(state => state.film.currentFilm);
 
-    const [imageLoading, setImageLoading] = useState(false);
-
     const [title, setTitle] = useState(film.title)
     const [year, setYear] = useState(film.year);
-    const [poster, setPoster] = useState(null);
-    const [still, setStill] = useState(null);
     const [tagline, setTagline] = useState(film.tagline);
     const [synopsis, setSynopsis] = useState(film.synopsis);
     const [runtime, setRuntime] = useState(film.runtime);
@@ -37,8 +33,6 @@ function EditFilmPage() {
         formData.append("id", film.id);
         formData.append("title", title);
         formData.append("year", year);
-        formData.append("poster", poster);
-        formData.append("still", still);
         formData.append("tagline", tagline);
         formData.append("synopsis", synopsis);
         formData.append("runtime", runtime);
@@ -52,11 +46,7 @@ function EditFilmPage() {
         formData.append("editor", editor);
         formData.append("cinematographer", cinematographer);
 
-        setImageLoading(true);
-        debugger
-
         await dispatch(thunkEditFilm(formData));
-        setImageLoading(false);
         history.push(`/film/${film.id}`);
     }
 
@@ -84,22 +74,6 @@ function EditFilmPage() {
                             type='number'
                             value={year}
                             onChange={(e) => setYear(e.target.value)}
-                            required
-                        />
-                    <label className='film-form-field'>Poster</label>
-                        <input
-                            className="film-input-field"
-                            type='file'
-                            accept="image/*"
-                            onChange={(e) => setPoster(e.target.files[0])}
-                            required
-                        />
-                    <label className='film-form-field'>Still</label>
-                        <input
-                            className="film-input-field"
-                            type='file'
-                            accept="image/*"
-                            onChange={(e) => setStill(e.target.files[0])}
                             required
                         />
                     <label className='film-form-field'>Tagline</label>
@@ -210,7 +184,6 @@ function EditFilmPage() {
                         SUBMIT EDIT
                     </button>
                 </div>
-                {(imageLoading) && <p>Loading...</p>}
             </form>
         </div>
     )

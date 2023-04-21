@@ -70,8 +70,35 @@ export const thunkCreateFilm = (formData) => async (dispatch) => {
 }
 
 export const thunkEditFilm = (formData) => async (dispatch) => {
-    debugger
     const response = await fetch('/api/film/edit', {
+        method: 'PUT',
+        body: formData
+    });
+
+    if (response.ok) {
+        const filmData = await response.json();
+        dispatch(editFilmAction(filmData));
+
+        return filmData;
+    }
+}
+
+export const thunkEditPoster = (formData) => async (dispatch) => {
+    const response = await fetch('/api/film/edit-poster', {
+        method: 'PUT',
+        body: formData
+    });
+
+    if (response.ok) {
+        const filmData = await response.json();
+        dispatch(editFilmAction(filmData));
+
+        return filmData;
+    }
+}
+
+export const thunkEditStill = (formData) => async (dispatch) => {
+    const response = await fetch('/api/film/edit-still', {
         method: 'PUT',
         body: formData
     });

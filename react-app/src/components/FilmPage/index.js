@@ -10,6 +10,8 @@ import ReactStars from "react-rating-stars-component"
 import OpenModalButton from "../OpenModalButton";
 import CreateReviewModal from "../CreateReviewModal";
 import EditReviewModal from "../EditReviewModal";
+import EditPosterModal from "../EditPosterModal";
+import EditStillModal from "../EditStillModal";
 import Cast from "../Cast";
 import './FilmPage.css'
 
@@ -177,7 +179,33 @@ const FilmPage = () => {
                 </div>
                 <div className="content-container">
                     <div className="main-row">
-                        <img className="left-poster" src={film.poster} />
+                        <div className="left-section">
+                            <img className="left-poster" src={film.poster} />
+                            {profile.id === 1 && (
+                                <ul className="admin-container">
+                                    <li className="admin-button">
+                                        <NavLink exact to={'/film/edit'}>
+                                            <button className="dropdown-button">Edit this film</button>
+                                        </NavLink>
+                                    </li>
+                                    <li className="admin-button">
+                                        <OpenModalButton
+                                            buttonText="Edit poster"
+                                            modalComponent={<EditPosterModal />}
+                                        />
+                                    </li>
+                                    <li className="admin-button">
+                                        <OpenModalButton
+                                            buttonText="Edit banner"
+                                            modalComponent={<EditStillModal />}
+                                        />
+                                    </li>
+                                    <li className="admin-button">
+                                        <button className="dropdown-button" onClick={handleDelete}>Delete this film</button>
+                                    </li>
+                                </ul>
+                            )}
+                        </div>
                         <div className="right-section">
                             <div className="title-container">
                                 <h1 className="title">{film.title}</h1>
@@ -287,21 +315,9 @@ const FilmPage = () => {
                                         <OpenModalButton
                                             buttonText="Review or log..."
                                             modalComponent={<CreateReviewModal />}
-                                        >
-                                            <button className="film-page-button"></button>
-                                        </OpenModalButton>
+                                        />
                                     )}
                                 </div>
-                                {profile.id === 1 && (
-                                    <div className="review-button-container">
-                                        <NavLink exact to={'/film/edit'}>
-                                            <button className="film-link-button">EDIT THIS FILM</button>
-                                        </NavLink>
-                                        <div>
-                                            <button className="film-link-button" onClick={handleDelete}>DELETE THIS FILM</button>
-                                        </div>
-                                    </div>
-                                )}
                             </div>
                         </div>
                     </div>

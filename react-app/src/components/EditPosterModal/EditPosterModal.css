@@ -1,0 +1,19 @@
+.image-form-container {
+    font-family: Graphik-Light-Web, sans-serif;
+    background-color: #445566;
+    color: #9ab;
+    margin: 0px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-input-field {
+    width: 255px;
+    max-width: 255px;
+    background-color: #ccddee;
+    border-radius: 3px;
+    margin: 20px;
+}

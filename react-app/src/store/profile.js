@@ -51,8 +51,21 @@ export const thunkCreateProfile = (formData) => async (dispatch) => {
 }
 
 export const thunkEditProfile = (formData) => async (dispatch) => {
-    console.log("BBBBB", formData.values)
     const response = await fetch('/api/profile/edit', {
+        method: 'PUT',
+        body: formData
+    });
+
+    if (response.ok) {
+        const profileData = await response.json();
+        dispatch(editProfileAction(profileData));
+
+        return profileData;
+    }
+}
+
+export const thunkNoUploadEditProfile = (formData) => async (dispatch) => {
+    const response = await fetch('/api/profile/edit-no-upload', {
         method: 'PUT',
         body: formData
     });
